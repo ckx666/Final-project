@@ -1,0 +1,2988 @@
+file 342184975 1683468865                                       
+version 2
+run random-0-20230507-22:06:42-4389
+attr configname random
+attr datetime 20230507-22:06:42
+attr experiment random
+attr inifile omnetpp.ini
+attr iterationvars $cqi=7
+attr iterationvarsf cqi=7-
+attr measurement $cqi=7
+attr network Highway
+attr processid 4389
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+itervar cqi 7
+param *.server.numApps 1
+param *.server.app[0].typename "\"Ckx_server\""
+param *.server.app[0].localPort 10086
+param *.server.app[0].destPort 10067
+param *.server.app[0].server_eta_threshold 170
+param *.car[*].numApps 1
+param *.car[*].app[0].typename "\"Ckx_car\""
+param **.routingRecorder.enabled false
+param *.playgroundSizeX 20000m
+param *.playgroundSizeY 20000m
+param *.playgroundSizeZ 50m
+param *.veinsManager.host "\"localhost\""
+param *.veinsManager.moduleType "\"simu5g.nodes.cars.NRCar\""
+param *.veinsManager.moduleName "\"car\""
+param *.veinsManager.launchConfig "xmldoc(\"heterogeneous.launchd.xml\")"
+param *.veinsManager.updateInterval 0.1s
+param *.car[*].mobilityType "\"VeinsInetMobility\""
+param **.numBands 50
+param **.d2dTxPower 400
+param **.ueTxPower 300
+param **.eNodeBTxPower 100
+param **.d2dModeSelectionType "\"D2DModeSelectionBestCqi\""
+param **.fading false
+param **.shadowing false
+param *.car[*].cellularNic.nrPhy.dynamicCellAssociation true
+param *.car[*].masterId 0
+param *.car[*].macCellId 0
+param *.car[*].nrMasterId 1
+param *.car[*].nrMacCellId 1
+param **.gNodeB1.macCellId 1
+param **.gNodeB1.macNodeId 1
+param **.gNodeB2.macCellId 2
+param **.gNodeB2.macNodeId 2
+param *.car[*].cellularNic.nrPhy.enableHandover true
+param *.gNodeB*.cellularNic.phy.enableHandover true
+param *.gNodeB*.cellularNic.phy.handoverLatency 50ms
+param *.gNodeB*.cellInfo.broadcastMessageInterval 1s
+param *.gNodeB*.numX2Apps 1
+param *.gNodeB*.x2App[*].server.localPort "5000 + ancestorIndex(1)"
+param *.gNodeB1.x2App[0].client.connectAddress "\"gNodeB2%x2ppp0\""
+param *.gNodeB2.x2App[0].client.connectAddress "\"gNodeB1%x2ppp0\""
+param **.sctp.nagleEnabled true
+param **.sctp.enableHeartbeats false
+param **.channelControl.alpha 2.75
+param **.bandwidth 2.4GHz
+param **.bitrate 10Mbps
+param **.sat -80dBm
+param **.amcMode "\"D2D\""
+param *.car[*].cellularNic.d2dInitialMode true
+param **.arp.typename "\"GlobalArp\""
+param **.harqProcesses 20
+param **.maxHarqRtx 10
+param **.harqFbEvaluationTimer 6
+param **.enableD2DCqiReporting false
+param **.usePreconfiguredTxParams true
+param **.d2dCqi 7
+
+vector 0 Highway.server.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 1 Highway.router.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 2 Highway.router.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 3 Highway.upf.ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 4 Highway.upf.ppp[1].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 5 Highway.upf.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 6 Highway.gNodeB1.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 7 Highway.gNodeB1.x2ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 8 Highway.gNodeB1.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 9 Highway.gNodeB2.pppIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 10 Highway.gNodeB2.x2ppp[0].ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 11 Highway.gNodeB2.pppMEHostIf.ppp transmissionState:vector ETV
+attr interpolationmode sample-hold
+attr source transmissionStateChanged
+attr title "tx state, vector"
+vector 12 Highway.gNodeB1.x2ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 13 Highway.gNodeB1.x2ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 14 Highway.gNodeB1.x2ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 15 Highway.gNodeB1.x2ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 16 Highway.gNodeB1.x2ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 17 Highway.gNodeB1.x2ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 18 Highway.gNodeB2.x2ppp[0].ppp rcvdPkFromHl:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packets received from higher layer, vector(packetBytes)"
+vector 19 Highway.gNodeB2.x2ppp[0].ppp.queue packetPushed:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet pushed, vector(packetBytes)"
+vector 20 Highway.gNodeB2.x2ppp[0].ppp.queue queueLength:vector ETV
+attr interpolationmode sample-hold
+attr source "count(packetPushed) - count(packetPopped) - count(packetRemoved) - count(packetDropped)"
+attr title "queue length, vector"
+vector 21 Highway.gNodeB2.x2ppp[0].ppp.queue packetPopped:vector(packetBytes) ETV
+attr interpolationmode none
+attr title "packet popped, vector(packetBytes)"
+vector 22 Highway.gNodeB2.x2ppp[0].ppp.queue queueingTime:vector ETV
+attr interpolationmode none
+attr source queueingTime(packetPopped)
+attr title "queueing times, vector"
+attr unit s
+vector 23 Highway.gNodeB2.x2ppp[0].ppp txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 24 Highway.gNodeB2.x2ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 25 Highway.gNodeB2.x2ppp[0].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 26 Highway.gNodeB1.x2ppp[0].ppp rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 27 Highway.gNodeB1.x2ppp[0].ppp passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 28 Highway.gNodeB1.cellularNic.mac avgServedBlocksUl:vector ETV
+attr source avgServedBlocksUl
+attr title "LTE Avg Served Blocks Ul, vector"
+attr unit blocks
+vector 29 Highway.gNodeB1.cellularNic.mac avgServedBlocksDl:vector ETV
+attr source avgServedBlocksDl
+attr title "LTE Avg Served Blocks Dl, vector"
+attr unit blocks
+vector 30 Highway.gNodeB2.cellularNic.mac avgServedBlocksUl:vector ETV
+attr source avgServedBlocksUl
+attr title "LTE Avg Served Blocks Ul, vector"
+attr unit blocks
+vector 31 Highway.gNodeB2.cellularNic.mac avgServedBlocksDl:vector ETV
+attr source avgServedBlocksDl
+attr title "LTE Avg Served Blocks Dl, vector"
+attr unit blocks
+vector 32 Highway.car[0].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 33 Highway.car[0].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 34 Highway.car[0].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 35 Highway.car[1].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 36 Highway.car[1].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 37 Highway.car[1].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 38 Highway.car[2].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 39 Highway.car[2].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 40 Highway.car[2].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 41 Highway.car[3].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 42 Highway.car[3].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 43 Highway.car[3].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 44 Highway.car[4].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 45 Highway.car[4].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 46 Highway.car[4].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 47 Highway.car[5].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 48 Highway.car[5].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 49 Highway.car[5].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 50 Highway.car[6].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 51 Highway.car[6].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 52 Highway.car[6].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 53 Highway.car[7].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 54 Highway.car[7].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 55 Highway.car[7].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 56 Highway.car[8].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 57 Highway.car[8].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 58 Highway.car[8].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 59 Highway.car[9].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 60 Highway.car[9].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 61 Highway.car[9].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 62 Highway.car[10].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 63 Highway.car[10].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 64 Highway.car[10].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 65 Highway.car[11].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 66 Highway.car[11].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 67 Highway.car[11].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 68 Highway.car[12].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 69 Highway.car[12].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 70 Highway.car[12].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 71 Highway.car[13].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 72 Highway.car[13].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 73 Highway.car[13].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 74 Highway.car[14].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 75 Highway.car[14].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 76 Highway.car[14].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 77 Highway.car[15].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 78 Highway.car[15].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 79 Highway.car[15].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 80 Highway.car[16].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 81 Highway.car[16].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 82 Highway.car[16].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 83 Highway.car[17].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 84 Highway.car[17].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 85 Highway.car[17].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 86 Highway.car[18].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 87 Highway.car[18].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 88 Highway.car[18].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 89 Highway.car[19].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 90 Highway.car[19].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 91 Highway.car[19].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 92 Highway.car[20].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 93 Highway.car[20].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 94 Highway.car[20].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 95 Highway.car[21].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 96 Highway.car[21].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 97 Highway.car[21].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 98 Highway.car[22].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 99 Highway.car[22].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 100 Highway.car[22].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 101 Highway.car[23].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 102 Highway.car[23].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 103 Highway.car[23].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 104 Highway.car[24].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 105 Highway.car[24].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 106 Highway.car[24].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 107 Highway.car[25].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 108 Highway.car[25].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 109 Highway.car[25].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 110 Highway.car[26].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 111 Highway.car[26].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 112 Highway.car[26].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 113 Highway.car[27].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 114 Highway.car[27].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 115 Highway.car[27].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 116 Highway.car[28].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 117 Highway.car[28].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 118 Highway.car[28].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 119 Highway.car[29].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 120 Highway.car[29].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 121 Highway.car[29].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 122 Highway.car[30].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 123 Highway.car[30].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 124 Highway.car[30].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 125 Highway.car[31].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 126 Highway.car[31].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 127 Highway.car[31].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 128 Highway.car[32].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 129 Highway.car[32].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 130 Highway.car[32].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 131 Highway.car[33].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 132 Highway.car[33].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 133 Highway.car[33].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 134 Highway.car[34].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 135 Highway.car[34].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 136 Highway.car[34].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 137 Highway.car[35].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 138 Highway.car[35].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 139 Highway.car[35].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 140 Highway.car[36].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 141 Highway.car[36].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 142 Highway.car[36].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 143 Highway.car[37].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 144 Highway.car[37].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 145 Highway.car[37].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 146 Highway.car[38].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 147 Highway.car[38].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 148 Highway.car[38].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 149 Highway.car[39].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 150 Highway.car[39].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 151 Highway.car[39].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 152 Highway.car[40].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 153 Highway.car[40].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 154 Highway.car[40].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 155 Highway.car[41].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 156 Highway.car[41].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 157 Highway.car[41].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 158 Highway.car[42].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 159 Highway.car[42].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 160 Highway.car[42].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 161 Highway.car[43].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 162 Highway.car[43].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 163 Highway.car[43].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 164 Highway.car[44].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 165 Highway.car[44].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 166 Highway.car[44].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 167 Highway.gNodeB1.cellularNic.channelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 168 Highway.gNodeB1.cellularNic.mac receivedPacketFromLowerLayer:vector(packetBytes) ETV
+attr interpolationmode none
+attr source receivedPacketFromLowerLayer
+vector 169 Highway.car[45].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 170 Highway.car[45].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 171 Highway.car[45].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 172 Highway.car[46].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 173 Highway.car[46].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 174 Highway.car[46].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 175 Highway.car[47].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 176 Highway.car[47].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 177 Highway.car[47].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 178 Highway.car[48].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 179 Highway.car[48].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 180 Highway.car[48].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 181 Highway.car[49].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 182 Highway.car[49].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 183 Highway.car[49].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 184 Highway.car[50].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 185 Highway.car[50].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 186 Highway.car[50].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 187 Highway.car[51].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 188 Highway.car[51].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 189 Highway.car[51].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 190 Highway.car[52].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 191 Highway.car[52].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 192 Highway.car[52].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 193 Highway.car[53].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 194 Highway.car[53].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 195 Highway.car[53].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 196 Highway.car[54].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 197 Highway.car[54].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 198 Highway.car[54].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 199 Highway.car[55].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 200 Highway.car[55].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 201 Highway.car[55].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 202 Highway.car[56].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 203 Highway.car[56].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 204 Highway.car[56].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 205 Highway.car[57].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 206 Highway.car[57].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 207 Highway.car[57].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 208 Highway.car[58].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 209 Highway.car[58].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 210 Highway.car[58].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 211 Highway.car[59].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 212 Highway.car[59].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 213 Highway.car[59].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 214 Highway.car[60].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 215 Highway.car[60].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 216 Highway.car[60].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 217 Highway.car[61].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 218 Highway.car[61].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 219 Highway.car[61].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 220 Highway.car[62].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 221 Highway.car[62].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 222 Highway.car[62].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 223 Highway.car[63].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 224 Highway.car[63].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 225 Highway.car[63].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 226 Highway.car[64].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 227 Highway.car[64].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 228 Highway.car[64].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 229 Highway.car[65].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 230 Highway.car[65].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 231 Highway.car[65].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 232 Highway.car[66].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 233 Highway.car[66].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 234 Highway.car[66].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 235 Highway.car[67].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 236 Highway.car[67].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 237 Highway.car[67].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 238 Highway.car[68].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 239 Highway.car[68].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 240 Highway.car[68].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 241 Highway.car[69].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 242 Highway.car[69].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 243 Highway.car[69].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 244 Highway.car[70].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 245 Highway.car[70].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 246 Highway.car[70].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 247 Highway.car[71].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 248 Highway.car[71].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 249 Highway.car[71].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 250 Highway.car[72].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 251 Highway.car[72].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 252 Highway.car[72].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 253 Highway.car[73].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 254 Highway.car[73].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 255 Highway.car[73].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 256 Highway.car[74].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 257 Highway.car[74].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 258 Highway.car[74].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 259 Highway.car[75].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 260 Highway.car[75].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 261 Highway.car[75].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 262 Highway.car[76].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 263 Highway.car[76].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 264 Highway.car[76].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 265 Highway.car[77].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 266 Highway.car[77].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 267 Highway.car[77].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 268 Highway.car[78].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 269 Highway.car[78].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 270 Highway.car[78].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 271 Highway.car[79].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 272 Highway.car[79].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 273 Highway.car[79].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 274 Highway.car[80].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 275 Highway.car[80].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 276 Highway.car[80].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 277 Highway.car[81].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 278 Highway.car[81].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 279 Highway.car[81].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 280 Highway.car[82].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 281 Highway.car[82].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 282 Highway.car[82].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 283 Highway.car[83].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 284 Highway.car[83].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 285 Highway.car[83].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 286 Highway.car[84].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 287 Highway.car[84].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 288 Highway.car[84].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 289 Highway.car[85].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 290 Highway.car[85].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 291 Highway.car[85].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 292 Highway.car[86].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 293 Highway.car[86].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 294 Highway.car[86].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 295 Highway.car[87].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 296 Highway.car[87].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 297 Highway.car[87].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 298 Highway.car[88].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 299 Highway.car[88].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 300 Highway.car[88].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 301 Highway.car[89].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 302 Highway.car[89].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 303 Highway.car[89].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 304 Highway.car[90].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 305 Highway.car[90].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 306 Highway.car[90].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 307 Highway.car[91].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 308 Highway.car[91].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 309 Highway.car[91].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 310 Highway.car[92].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 311 Highway.car[92].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 312 Highway.car[92].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 313 Highway.car[93].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 314 Highway.car[93].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 315 Highway.car[93].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 316 Highway.car[94].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 317 Highway.car[94].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 318 Highway.car[94].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 319 Highway.car[95].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 320 Highway.car[95].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 321 Highway.car[95].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 322 Highway.car[96].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 323 Highway.car[96].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 324 Highway.car[96].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 325 Highway.car[97].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 326 Highway.car[97].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 327 Highway.car[97].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 328 Highway.car[98].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 329 Highway.car[98].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 330 Highway.car[98].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 331 Highway.car[99].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 332 Highway.car[99].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 333 Highway.car[99].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 334 Highway.car[100].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 335 Highway.car[100].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 336 Highway.car[100].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 337 Highway.car[101].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 338 Highway.car[101].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 339 Highway.car[101].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 340 Highway.car[102].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 341 Highway.car[102].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 342 Highway.car[102].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 343 Highway.car[103].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 344 Highway.car[103].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 345 Highway.car[103].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 346 Highway.car[104].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 347 Highway.car[104].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 348 Highway.car[104].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 349 Highway.car[105].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 350 Highway.car[105].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 351 Highway.car[105].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 352 Highway.car[106].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 353 Highway.car[106].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 354 Highway.car[106].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 355 Highway.car[107].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 356 Highway.car[107].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 357 Highway.car[107].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 358 Highway.car[108].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 359 Highway.car[108].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 360 Highway.car[108].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+167	62896 1063685 763 533242 0.102 2.22 32768 102.03396320577 153.22988844883 3762151.8055099 435150722.91023
+168	1126581 608587 764 533243 0.102 2.22 32768 1 1 32768 32768
+vector 361 Highway.car[109].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 362 Highway.car[109].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 363 Highway.car[109].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 364 Highway.car[110].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 365 Highway.car[110].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 366 Highway.car[110].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 367 Highway.car[111].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 368 Highway.car[111].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 369 Highway.car[111].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 370 Highway.car[112].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 371 Highway.car[112].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 372 Highway.car[112].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 373 Highway.car[113].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 374 Highway.car[113].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 375 Highway.car[113].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 376 Highway.car[114].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 377 Highway.car[114].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 378 Highway.car[114].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 379 Highway.car[115].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 380 Highway.car[115].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 381 Highway.car[115].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 382 Highway.car[116].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 383 Highway.car[116].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 384 Highway.car[116].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 385 Highway.car[117].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 386 Highway.car[117].cellularNic.nrChannelModel[0] measuredSinr:vector ETV
+attr source measuredSinr
+attr title "SINR measured at feedback computation, vector"
+attr unit dB
+vector 387 Highway.car[117].cellularNic.nrPhy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 388 Highway.car[118].cellularNic.phy servingCell:vector ETV
+attr source servingCell
+attr title "ID of the serving eNodeB for the UE, vector"
+attr unit ""
+vector 389 Highway.car[118].cellularNic.nrChannelModel[0] measured146	42330264 1169044 11706815 12238997 40.53 42.318 32768 102.28851949862 148.89451942932 3804651.7059626 445857371.07922
+147	43499308 713520 11706816 12238998 40.53 42.318 32768 1 1 32768 32768
+146	44212828 1169112 12238999 12770670 42.318 44.104 32768 102.29402056979 153.21822420026 3809352.6078926 447149331.13859
+147	45381940 713556 12239000 12770671 42.318 44.104 32768 1 1 32768 32768
+146	46095496 1169049 12770672 13302797 44.104 45.892 32768 102.48435163252 152.3252704693 3812060.779576 447838146.41587
+147	47264545 713636 12770673 13302798 44.104 45.892 32768 1 1 32768 32768
+146	47978181 1168418 13302799 13834991 45.892 47.68 32768 102.03556108658 149.35055233061 3818688.5708139 449645540.02903
+147	49146599 713580 13302800 13834992 45.892 47.68 32768 1 1 32768 32768
+146	49860179 1168988 13834993 14366650 47.68 49.466 32768 102.0914439561 153.22030054298 3822042.3622472 450585209.63524
+147	51029167 713526 13834994 14366651 47.68 49.466 32768 1 1 32768 32768
+146	51742693 1168545 14366652 14898856 49.466 51.254 32768 102.06824896887 153.23025873396 3819224.5257723 449897606.77446
+147	52911238 713498 14366653 14898857 49.466 51.254 32768 1 1 32768 32768
+146	53624736 1168954 14898858 15430537 51.254 53.04 32768 102.03575064193 148.85483844529 3810332.8984267 447572727.00669
+147	54793690 713564 14898859 15430538 51.254 53.04 32768 1 1 32768 32768
+146	55507254 1168503 15430539 15962654 53.04 54.828 32768 102.03767279472 153.22929234771 3807542.3697217 447011511.33745
+147	56675757 713598 15430540 15962655 53.04 54.828 32768 1 1 32768 32768
+146	57389355 1169794 15962656 16494855 54.828 56.616 32768 102.03261185298 152.51580035684 3802224.4546406 445735147.74328
+147	58559149 713556 15962657 16494856 54.828 56.616 32768 1 1 32768 32768
+146	59272705 1169431 16494857 17027053 56.616 58.404 32768 102.03666561423 142.35332839093 3792289.5715323 443185110.21506
+147	60442136 713524 16494858 17027054 56.616 58.404 32768 1 1 32768 32768
+146	61155660 1169545 17027055 17558725 58.404 60.19 32768 102.09845956241 148.87892269792 3788215.5703489 442343311.22025
+147	62325205 713524 17027056 17558726 58.404 60.19 32768 1 1 32768 32768
+146	63038729 1169799 17559257 18090831 60.192 61.978 32768 102.03432162092 145.80393272532 3785288.0911479 441654822.05377
+147	64208528 713664 17559258 18090832 60.192 61.978 32768 1 1 32768 32768
+146	64922192 1169363 18090833 18623011 61.978 63.766 32768 102.05971380395 153.2165500417 3787044.5799589 442196280.34576
+147	66091555 713498 18090834 18623012 61.978 63.766 32768 1 1 32768 32768
+28	66805053 682430 9396716 19149831 32.769 65.536 32768 0 0 0 0
+29	67487483 682430 9396716 19149831 32.769 65.536 32768 0 0 0 0
+30	68169913 682430 9396717 19149832 32.769 65.536 32768 0 0 0 0
+31	68852343 682430 9396717 19149832 32.769 65.536 32768 0 0 0 0
+146	69534773 1169387 18623013 19154643 63.766 65.552 32768 102.03352105975 148.33003129967 3787205.6053683 442068141.4899
+147	70704160 713556 18623014 19154644 63.766 65.552 32768 1 1 32768 32768
+146	71417716 1169548 19154645 19686809 65.552 67.34 32768 101.78377707206 142.45345811579 3791105.930039 442975584.97717
+147	72587264 713544 19154646 19686810 65.552 67.34 32768 1 1 32768 32768
+146	73300808 1168993 19686811 20218470 67.34 69.126 32768 101.78533395868 142.46206194911 3796689.2091493 444346649.17634
+147	74469801 713506 19686812 20218471 67.34 69.126 32768 1 1 32768 32768
+146	75183307 1169103 20218472 20750587 69.126 70.914 32768 101.9249651887 153.23036995978 3807827.0013892 447349545.5988
+147	76352410 713636 20218473 20750588 69.126 70.914 32768 1 1 32768 32768
+146	77066046 1169417 20750589 21282751 70.914 72.702 32768 102.0367143645 153.13191078811 3813118.0436595 448715735.24269
+147	78235463 713498 20750590 21282752 70.914 72.702 32768 1 1 32768 32768
+146	78948961 1169523 21282753 21814931 72.702 74.49 32768 102.0490854101 145.03494417457 3809684.9730322 447600210.66567
+147	80118484 713626 21282754 21814932 72.702 74.49 32768 1 1 32768 32768
+146	80832110 1169142 21814933 22347126 74.49 76.278 32768 102.907321887 145.95027174157 3808672.8497112 447298522.77386
+147	82001252 713508 21814934 22347127 74.49 76.278 32768 1 1 32768 32768
+146	82714760 1168837 22347128 22878783 76.278 78.064 32768 102.79363871618 153.22302300064 3816103.8317152 449300860.90147
+147	83883597 713500 22347129 22878784 76.278 78.064 32768 1 1 32768 32768
+146	84597097 1168955 22878785 23410927 78.064 79.852 32768 102.03300578438 148.38101826345 3823841.7455972 451079530.05729
+147	85766052 713636 22878786 23410928 78.064 79.852 32768 1 1 32768 32768
+146	86479688 1169077 23410929 23942598 79.852 81.638 32768 102.05051535515 153.20686896323 3835224.5960044 453873923.57394
+147	87648765 713526 23410930 23942599 79.852 81.638 32768 1 1 32768 32768
+146	88362291 1169332 23942600 24474810 81.638 83.426 32768 102.7297083162 152.99404615173 3844525.495073 456066252.79773
+147	89531623 713584 23942601 24474811 81.638 83.426 32768 1 1 32768 32768
+146	90245207 1169039 24474812 25006527 83.426 85.212 32768 102.81722159266 153.2147001814 3854353.9092067 458535081.45533
+147	91414246 713494 24474813 25006528 83.426 85.212 32768 1 1 32768 32768
+146	92127740 1169479 25006529 25538654 85.212 87 32768 101.84491047569 151.77068550317 3861819.8236299 460434951.5512
+147	93297219 713564 25006530 25538655 85.212 87 32768 1 1 32768 32768
+146	94010783 1168966 25538656 26070847 87 88.788 32768 101.78163900907 145.43827759153 3862444.256681 460450804.94313
+147	95179749 713654 25538657 26070848 87 88.788 32768 1 1 32768 32768
+146	95893403 1168899 26070849 26603065 88.788 90.576 32768 102.40401362776 147.14443606946 3862951.2645687 460492208.94006
+147	97062302 713500 26070850 26603066 88.788 90.576 32768 1 1 32768 32768
+146	97775802 1169140 26603067 27135258 90.576 92.364 32768 101.78343410377 148.88632030701 3868041.4155763 461787725.86375
+147	98944942 713584 26603068 27135259 90.576 92.364 32768 1 1 32768 32768
+146	99658526 1168661 27135260 27666951 92.364 94.15 32768 101.78587911629 148.89535531156 3873112.9648682 462877523.72376
+147	100827187 713502 27135261 27666952 92.364 94.15 32768 1 1 32768 32768
+146	101540689 1168597 27666953 28199099 94.15 95.938 32768 101.7935523083 142.4642647067 3879410.2773292 464203850.67259
+147	102709286 713660 27666954 28199100 94.15 95.938 32768 1 1 32768 32768
+146	103422946 1168854 28199101 28730782 95.938 97.724 32768 102.53936058243 153.22443342438 3892657.4251144 467505930.57604
+147	104591800 713494 28199102 28730783 95.938 97.724 32768 1 1 32768 32768
+28	105305294 684457 19150167 28903403 65.537 98.304 32768 0 0 0 0
+29	105989751 684457 19150167 28903403 65.537 98.304 32768 0 0 0 0
+30	106674208 684457 19150168 28903404 65.537 98.304 32768 0 0 0 0
+31	107358665 684457 19150168 28903404 65.537 98.304 32768 0 0 0 0
+146	108043122 1168977 28730784 29263007 97.724 99.512 32768 103.00480303556 152.95120885195 3900475.8084558 469347367.03363
+147	109212099 713500 28730785 29263008 97.724 99.512 32768 1 1 32768 32768
+146	109925599 1192446 29263009 29794734 99.512 101.298 32768 102.81025573198 151.62836585322 3902057.8280335 469511200.32541
+147	111118045 737478 29263010 29794735 99.512 101.298 32768 1 1 32768 32768
+146	111855523 1200843 29794736 30326957 101.298 103.086 32768 102.91624231493 153.22642997084 3907367.525131 470863040.72189
+147	113056366 746264 29794737 30326958 101.298 103.086 32768 1 1 32768 32768
+146	113802630 1201283 30326959 30859114 103.086 104.874 32768 102.80987711564 147.04823877579 3911693.0009275 471940602.68992
+147	115003913 746408 30326960 30859115 103.086 104.874 32768 1 1 32768 32768
+146	115750321 1201413 30859116 31391352 104.874 106.662 32768 103.07777787593 153.22953085562 3919177.1487109 474033168.25515
+147	116951734 746262 30859117 31391353 104.874 106.662 32768 1 1 32768 32768
+146	117697996 1201770 31391354 31923590 106.662 108.45 32768 102.80993013447 153.22968585676 3922477.9576058 474842357.22729
+147	118899766 746318 31391355 31923591 106.662 108.45 32768 1 1 32768 32768
+146	119646084 1201298 31923592 32455303 108.45 110.236 32768 102.80993013447 144.96810550864 3922875.8618257 474700472.16383
+147	120847382 746328 31923593 32455304 108.45 110.236 32768 1 1 32768 32768
+146	121593710 1201799 32455305 32987328 110.236 112.024 32768 103.31967904641 144.45613094987 3931286.1725078 476723361.5605
+147	122795509 746264 32455306 32987329 110.236 112.024 32768 1 1 32768 32768
+146	123541773 1201664 32987330 33518524 112.024 113.81 32768 103.07769534033 153.15109735623 3946218.9489898 480522946.19929
+147	124743437 746410 32987331 33518525 112.024 113.81 32768 1 1 32768 32768
+146	125489847 1201367 33518526 34050353 113.81 115.598 32768 103.16826233496 153.23014921266 3955669.2973407 482740062.3749
+147	126691214 746316 33518527 34050354 113.81 115.598 32768 1 1 32768 32768
+146	127437530 1201788 34050355 34581687 115.598 117.384 32768 103.27917371397 148.89562133654 3963125.0035656 484571942.39624
+147	128639318 746296 34050356 34581688 115.598 117.384 32768 1 1 32768 32768
+146	129385614 1201658 34582191 35113523 117.386 119.172 32768 103.07700940632 146.76666727003 3961677.0177262 484128724.49896
+147	130587272 746322 34582192 35113524 117.386 119.172 32768 1 1 32768 32768
+146	131333594 1201979 35113525 35645255 119.172 120.96 32768 103.22049609156 148.89344430185 3956052.7681931 482716952.85378
+147	132535573 746344 35113526 35645256 119.172 120.96 32768 1 1 32768 32768
+146	133281917 1202248 35645257 36177093 120.96 122.748 32768 102.56040428413 146.08852388474 3949297.584421 481008913.53109
+147	134484165 746354 35645258 36177094 120.96 122.748 32768 1 1 32768 32768
+146	135230519 1201887 36177095 36708933 122.748 124.536 32768 102.54675744353 153.22978522065 3948941.8187953 481047811.33432
+147	136432406 746264 36177096 36708934 122.748 124.536 32768 1 1 32768 32768
+146	137178670 1201698 36708935 37240237 124.536 126.322 32768 102.9125050967 149.70447139862 3946980.6290465 480457029.39081
+147	138380368 746296 36708936 37240238 124.536 126.322 32768 1 1 32768 32768
+146	139126664 1201404 37240239 37772075 126.322 128.11 32768 102.81217881993 142.4642647067 3946576.697552 480302796.78721
+147	140328068 746338 37240240 37772076 126.322 128.11 32768 1 1 32768 32768
+146	141074406 1201540 37772077 38303276 128.11 129.896 32768 102.56004904553 148.65486103544 3950150.1311154 481279211.45333
+147	142275946 746416 37772078 38303277 128.11 129.896 32768 1 1 32768 32768
+28	143022362 715531 28903765 38653110 98.305 131.072 32768 0 0 0 0
+29	143737893 715531 28903765 38653110 98.305 131.072 32768 0 0 0 0
+30	144453424 715531 28903766 38653111 98.305 131.072 32768 0 0 0 0
+31	145168955 715531 28903766 38653111 98.305 131.072 32768 0 0 0 0
+146	145884486 1201288 38303810 38835114 129.898 131.684 32768 102.54991702211 148.89590861772 3954215.8833732 482367861.0713
+147	147085774 746322 38303811 38835115 129.898 131.684 32768 1 1 32768 32768
+146	147832096 1200619 38835116 39366944 131.684 133.472 32768 103.05916473983 148.89225683441 3959423.3112588 483775582.10303
+147	149032715 746264 38835117 39366945 131.684 133.472 32768 1 1 32768 32768
+146	149778979 1201202 39366946 39898274 133.472 135.258 32768 102.8155831924 153.22918381261 3963353.4971501 484868885.73647
+147	150980181 746322 39366947 39898275 133.472 135.258 32768 1 1 32768 32768
+146	151726503 1201034 39898276 40430108 135.258 137.046 32768 102.81210561345 151.63576425089 3956531.4960071 482882542.99447
+147	152927537 746324 39898277 40430109 135.258 137.046 32768 1 1 32768 32768
+146	153673861 1200648 40430110 40961842 137.046 138.834 32768 103.14386281102 142.48431202023 3951500.2398665 481462271.88377
+147	154874509 746348 40430111 40961843 137.046 138.834 32768 1 1 32768 32768
+146	155620857 1201707 40961844 41493676 138.834 140.622 32768 103.16519765773 142.51639867422 3950133.316951 481071625.53855
+147	156822564 746322 40961845 41493677 138.834 140.622 32768 1 1 32768 32768
+146	157568886 1201659 41493678 42024980 140.622 142.408 32768 103.07720236427 148.16908379249 3953151.5480635 481845837.58132
+147	158770545 746320 41493679 42024981 140.622 142.408 32768 1 1 32768 32768
+146	159516865 1201057 42024982 42556817 142.408 144.196 32768 103.26896912902 153.22826204424 3957683.7780114 483072359.50364
+147	160717922 746292 42024983 42556818 142.408 144.196 32768 1 1 32768 32768
+146	161464214 1200941 42556819 43088547 144.196 145.984 32768 102.95785291244 147.49487275676 3956563.2460239 482653043.75822
+147	162665155 746376 42556820 43088548 144.196 145.984 32768 1 1 32768 32768
+146	163411531 1200851 43088549 43619851 145.984 147.77 32768 102.81014854563 153.22047967475 3957653.7846831 482956906.6944
+147	164612382 746306 43088550 43619852 145.984 147.77 32768 1 1 32768 32768
+146	165358688 1201184 43619853 44151687 147.77 149.558 32768 102.56780850144 153.22047967475 3955509.7804469 482484087.61359
+147	166559872 746340 43619854 44151688 147.77 149.558 32768 1 1 32768 32768
+146	167306212 1201710 44151689 44683017 149.558 151.344 32768 102.55044525306 147.30536528705 3945395.8611599 479825020.78505
+147	168507922 746292 44151690 44683018 149.558 151.344 32768 1 1 32768 32768
+146	169254214 1201127 44683019 45214849 151.344 153.132 32768 103.10878161324 153.22498364765 3938354.859774 478198949.53199
+147	170455341 746266 44683020 45214850 151.344 153.132 32768 1 1 32768 32768
+146	171201607 1200918 45214851 45746575 153.132 154.92 32768 102.54869380539 148.74010121634 3928775.3681017 475733770.72957
+147	172402525 746408 45214852 45746576 153.132 154.92 32768 1 1 32768 32768
+146	173148933 1201221 45746577 46278401 154.92 156.708 32768 102.56124479207 153.22328479527 3922284.9915007 474142443.28576
+147	174350154 746290 45746578 46278402 154.92 156.708 32768 1 1 32768 32768
+146	175096444 1200873 46278403 46809688 156.708 158.494 32768 103.07691504605 150.3633007116 3914195.66787 471975431.32192
+147	176297317 746352 46278404 46809689 156.708 158.494 32768 1 1 32768 32768
+146	177043669 1201392 46810220 47341510 158.496 160.282 32768 102.8103236029 153.22986331376 3914910.4291648 472238225.68897
+147	178245061 746292 46810221 47341511 158.496 160.282 32768 1 1 32768 32768
+146	178991353 1200850 47341512 47873320 160.282 162.07 32768 102.8234969634 145.96598371296 3914887.885838 472241460.49845
+147	180192203 746290 47341513 47873321 160.282 162.07 32768 1 1 32768 32768
+28	180938493 717227 38653414 48399694 131.073 163.84 32768 0 0 0 0
+29	181655720 717227 38653414 48399694 131.073 163.84 32768 0 0 0 0
+30	182372947 717227 38653415 48399695 131.073 163.84 32768 0 0 0 0
+31	183090174 717227 38653415 48399695 131.073 163.84 32768 0 0 0 0
+146	183807401 1201666 47873322 48404500 162.07 163.856 32768 102.81756991907 153.22112209004 3917270.8400273 473136185.83171
+147	185009067 746408 47873323 48404501 162.07 163.856 32768 1 1 32768 32768
+146	185755475 1201876 48404502 48936302 163.856 165.644 32768 102.80974767244 150.91707342458 3907877.9533535 470849175.85683
+147	186957351 746266 48404503 48936303 163.856 165.644 32768 1 1 32768 32768
+146	187703617 1201380 48936304 49467594 165.644 167.43 32768 102.54910565369 148.87936039305 3891087.4312208 466608218.01415
+147	188904997 746330 48936305 49467595 165.644 167.43 32768 1 1 32768 32768
+146	189651327 1201907 49467596 49999378 167.43 169.218 32768 102.64260397155 142.35597441244 3879065.2340763 463720727.9266
+147	190853234 746312 49467597 49999379 167.43 169.218 32768 1 1 32768 32768
+146	191599546 1201628 49999380 50531154 169.218 171.006 32768 101.79114435552 145.33849145023 3873178.7749237 462530933.08686
+147	192801174 746268 49999381 50531155 169.218 171.006 32768 1 1 32768 32768
+146	193547442 1201419 50531156 51062859 171.006 172.794 32768 101.78564179655 153.20526009701 3872448.176626 462713284.99199
+147	194748861 746460 50531157 51062860 171.006 172.794 32768 1 1 32768 32768
+146	195495321 1201130 51062861 51594639 172.794 174.582 32768 102.03533799133 146.26330999317 3870351.9177133 462248254.53676
+147	196696451 746266 51062862 51594640 172.794 174.582 32768 1 1 32768 32768
+146	197442717 1201613 51594641 52125891 174.582 176.368 32768 102.03667829694 148.8810307581 3869957.2885356 462318280.91119
+147	198644330 746380 51594642 52125892 174.582 176.368 32768 1 1 32768 32768
+146	199390710 1201415 52125893 52657671 176.368 178.156 32768 102.03732625501 148.89192841622 3867234.9687825 461740627.46995
+147	200592125 746262 52125894 52657672 176.368 178.156 32768 1 1 32768 32768
+146	201338387 1201748 52657673 53188841 178.156 179.942 32768 102.03732625501 148.88508733514 3862176.9338761 460560650.82426
+147	202540135 746380 52657674 53188842 178.156 179.942 32768 1 1 32768 32768
+146	203286515 1200851 53188843 53720617 179.942 181.73 32768 101.78165104326 145.43888063017 3857261.1557071 459407702.01715
+147	204487366 746310 53188844 53720618 179.942 181.73 32768 1 1 32768 32768
+146	205233676 1200134 53720619 54251893 181.73 183.516 32768 101.78169431713 145.33169700035 3852647.8845405 458297171.06255
+147	206433810 746276 53720620 54251894 181.73 183.516 32768 1 1 32768 32768
+146	207180086 1200658 54251895 54783673 183.516 185.304 32768 101.78255026129 142.35332855076 3850174.7466471 457667597.22988
+147	208380744 746352 54251896 54783674 183.516 185.304 32768 1 1 32768 32768
+146	209127096 1201279 54783675 55315452 185.304 187.092 32768 101.78551694453 148.89176503882 3855273.2001055 459004956.06125
+147	210328375 746288 54783676 55315453 185.304 187.092 32768 1 1 32768 32768
+146	211074663 1201434 55315454 55847156 187.092 188.88 32768 101.78229461353 148.89219759218 3861886.7242879 460580456.44451
+147	212276097 746420 55315455 55847157 187.092 188.88 32768 1 1 32768 32768
+146	213022517 1201333 55847158 56378940 188.88 190.668 32768 101.78745092528 148.82924968908 3865645.555419 461383608.04737
+147	214223850 746278 55847159 56378941 188.88 190.668 32768 1 1 32768 32768
+146	214970128 1201535 56378942 56910190 190.668 192.454 32768 102.03407144672 148.89028773173 3869281.8694303 462193507.09508
+147	216171663 746268 56378943 56910191 190.668 192.454 32768 1 1 32768 32768
+146	216917931 1201264 56910192 57441968 192.454 194.242 32768 102.03747876849 143.78631977736 3870058.2985929 462115080.0446
+147	218119195 746352 56910193 57441969 192.454 194.242 32768 1 1 32768 32768
+146	218865547 1201059 57441970 57973220 194.242 196.028 32768 102.60891155276 142.35059323052 3873088.1560147 462619767.75967
+147	220066606 746290 57441971 57973221 194.242 196.028 32768 1 1 32768 32768
+28	220812896 717226 48400030 58145616 163.841 196.608 32768 0 0 0 0
+29	221530122 717226 48400030 58145616 163.841 196.608 32768 0 0 0 0
+30	222247348 717226 48400031 58145617 163.841 196.608 32768 0 0 0 0
+31	222964574 717226 48400031 58145617 163.841 196.608 32768 0 0 0 0
+146	223681800 1201425 57973222 58504932 196.028 197.816 32768 102.03570818217 142.78755003768 3879413.5684423 464062109.4048
+147	224883225 746408 57973223 58504933 196.028 197.816 32768 1 1 32768 32768
+146	225629633 1200569 58504934 59036224 197.816 199.602 32768 101.78274443773 153.23041781395 3889719.7677174 466699323.80674
+147	226830202 746262 58504935 59036225 197.816 199.602 32768 1 1 32768 32768
+0	227576464 8 0 0 0 0 1 0 0 0 0
+1	227576472 8 0 0 0 0 1 0 0 0 0
+2	227576480 8 0 0 0 0 1 0 0 0 0
+3	227576488 8 0 0 0 0 1 0 0 0 0
+4	227576496 8 0 0 0 0 1 0 0 0 0
+5	227576504 8 0 0 0 0 1 0 0 0 0
+6	227576512 8 0 0 0 0 1 0 0 0 0
+7	227576520 157 0 72 0 0.0000005052 9 0 1 4 4
+8	227576677 8 0 0 0 0 1 0 0 0 0
+9	227576685 8 0 0 0 0 1 0 0 0 0
+10	227576693 166 0 71 0 0.0000005052 9 0 1 4 4
+11	227576859 9 0 0 0 0 1 0 0 0 0
+12	227576868 79 27 68 0 0.0000004708 4 36 172 416 52800
+13	227576947 79 27 68 0 0.0000004708 4 36 172 416 52800
+14	227577026 146 27 68 0 0.0000004708 8 0 1 4 4
+15	227577172 79 27 68 0 0.0000004708 4 36 172 416 52800
+16	227577251 73 27 68 0 0.0000004708 4 0 0 0 0
+17	227577324 79 27 68 0 0.0000004708 4 43 179 444 58820
+18	227577403 79 28 66 0 0.0000004708 4 36 172 416 52800
+19	227577482 79 28 66 0 0.0000004708 4 36 172 416 52800
+20	227577561 146 28 66 0 0.0000004708 8 0 1 4 4
+21	227577707 79 28 66 0 0.0000004708 4 36 172 416 52800
+22	227577786 73 28 66 0 0.0000004708 4 0 0 0 0
+23	227577859 79 28 66 0 0.0000004708 4 43 179 444 58820
+24	227577938 90 31 74 0.0000001292 0.0000005552 4 43 179 444 58820
+25	227578028 90 31 74 0.0000001292 0.0000005552 4 36 172 416 52800
+26	227578118 90 32 73 0.0000001292 0.0000005552 4 43 179 444 58820
+27	227578208 90 32 73 0.0000001292 0.0000005552 4 36 172 416 52800
+28	227578298 74242 58145978 59154478 196.609 200 3392 0 0 0 0
+29	227652540 74242 58145978 59154478 196.609 200 3392 0 0 0 0
+30	227726782 74242 58145979 59154479 196.609 200 3392 0 0 0 0
+31	227801024 74242 58145979 59154479 196.609 200 3392 0 0 0 0
+32	227875266 13 479 479 0.1 0.1 1 0 0 0 0
+33	227875279 54 479 479 0.1 0.1 2 91.195922054129 112.99755086595 204.19347292008 21085.142701005
+34	227875333 13 479 479 0.1 0.1 1 1 1 1 1
+35	227875346 13 479 479 0.1 0.1 1 0 0 0 0
+36	227875359 54 479 479 0.1 0.1 2 89.224404545768 106.85109808771 196.07550263347 19378.151529096
+37	227875413 13 479 479 0.1 0.1 1 1 1 1 1
+38	227875426 13 479 479 0.1 0.1 1 0 0 0 0
+39	227875439 53 479 479 0.1 0.1 2 93.877719941755 126.0802543104 219.95797425215 24709.256828438
+40	227875492 13 479 479 0.1 0.1 1 1 1 1 1
+41	227875505 13 479 479 0.1 0.1 1 0 0 0 0
+42	227875518 54 479 479 0.1 0.1 2 93.621327247874 119.60033799858 213.22166524645 23069.193765027
+43	227875572 13 479 479 0.1 0.1 1 1 1 1 1
+44	227875585 13 479 479 0.1 0.1 1 0 0 0 0
+45	227875598 54 479 479 0.1 0.1 2 97.715048418117 143.58476682533 241.29981524345 30164.815951639
+46	227875652 13 479 479 0.1 0.1 1 1 1 1 1
+47	227875665 13 479 479 0.1 0.1 1 0 0 0 0
+48	227875678 54 479 479 0.1 0.1 2 94.341322772537 116.93904153055 211.28036430309 22575.024616556
+49	227875732 13 479 479 0.1 0.1 1 1 1 1 1
+50	227875745 13 479 479 0.1 0.1 1 0 0 0 0
+51	227875758 54 479 479 0.1 0.1 2 98.134339954621 118.17200525817 216.3063452128 23594.971505067
+52	227875812 13 479 479 0.1 0.1 1 1 1 1 1
+53	227875825 13 479 479 0.1 0.1 1 0 0 0 0
+54	227875838 54 479 479 0.1 0.1 2 88.483342459031 104.63797918634 193.12132164537 18778.408580922
+55	227875892 13 479 479 0.1 0.1 1 1 1 1 1
+56	227875905 13 479 479 0.1 0.1 1 0 0 0 0
+57	227875918 54 479 479 0.1 0.1 2 92.067698129094 114.76602052861 206.8337186577 21647.700506764
+58	227875972 13 479 479 0.1 0.1 1 1 1 1 1
+59	227875985 13 479 479 0.1 0.1 1 0 0 0 0
+60	227875998 54 479 479 0.1 0.1 2 90.950864541433 110.23062684599 201.18149138742 20422.850855694
+61	227876052 13 479 479 0.1 0.1 1 1 1 1 1
+62	227876065 13 479 479 0.1 0.1 1 0 0 0 0
+63	227876078 54 479 479 0.1 0.1 2 94.648609974242 131.46041667975 226.10902665399 26240.20052367
+64	227876132 13 479 479 0.1 0.1 1 1 1 1 1
+65	227876145 13 479 479 0.1 0.1 1 0 0 0 0
+66	227876158 54 479 479 0.1 0.1 2 88.296008108549 103.75208944553 192.04809755408 18560.681112217
+67	227876212 13 479 479 0.1 0.1 1 1 1 1 1
+68	227876225 13 479 479 0.1 0.1 1 0 0 0 0
+69	227876238 53 479 479 0.1 0.1 2 94.611375852706 120.6559035683 215.26727942101 23509.159506625
+70	227876291 13 479 479 0.1 0.1 1 1 1 1 1
+71	227876304 13 479 479 0.1 0.1 1 0 0 0 0
+72	227876317 54 479 479 0.1 0.1 2 90.438030937175 104.91597768679 195.35400862397 19186.39981377
+73	227876371 13 479 479 0.1 0.1 1 1 1 1 1
+74	227876384 13 479 479 0.1 0.1 1 0 0 0 0
+75	227876397 54 479 479 0.1 0.1 2 99.478953149462 125.87661239816 225.35556554762 25740.983668549
+76	227876451 13 479 479 0.1 0.1 1 1 1 1 1
+77	227876464 13 479 479 0.1 0.1 1 0 0 0 0
+78	227876477 54 479 479 0.1 0.1 2 92.504197810066 117.94726081563 210.45145862569 22468.582946394
+79	227876531 13 479 479 0.1 0.1 1 1 1 1 1
+80	227876544 13 479 479 0.1 0.1 1 0 0 0 0
+81	227876557 54 479 479 0.1 0.1 2 96.541818051683 148.11779239083 244.65961044251 31259.203055457
+82	227876611 13 479 479 0.1 0.1 1 1 1 1 1
+83	227876624 13 479 479 0.1 0.1 1 0 0 0 0
+84	227876637 54 479 479 0.1 0.1 2 97.431119752237 120.79758101772 218.22870076996 24084.878675907
+85	227876691 13 479 479 0.1 0.1 1 1 1 1 1
+86	227876704 13 479 479 0.1 0.1 1 0 0 0 0
+87	227876717 54 479 479 0.1 0.1 2 90.937005012198 111.51983468908 202.45683970128 20706.212409668
+88	227876771 13 479 479 0.1 0.1 1 1 1 1 1
+89	227876784 13 479 479 0.1 0.1 1 0 0 0 0
+90	227876797 54 479 479 0.1 0.1 2 88.982721272865 104.21717276198 193.19989403485 18779.143783626
+91	227876851 13 479 479 0.1 0.1 1 1 1 1 1
+92	227876864 13 479 479 0.1 0.1 1 0 0 0 0
+93	227876877 53 479 479 0.1 0.1 2 94.72008543039 110.48202032853 205.20210575892 21178.171399813
+94	227876930 13 479 479 0.1 0.1 1 1 1 1 1
+95	227876943 13 479 479 0.1 0.1 1 0 0 0 0
+96	227876956 54 479 479 0.1 0.1 2 91.134946987748 104.38188983205 195.5168368198 19201.15748737
+97	227877010 13 479 479 0.1 0.1 1 1 1 1 1
+98	227877023 13 479 479 0.1 0.1 1 0 0 0 0
+99	227877036 54 479 479 0.1 0.1 2 92.181973466493 113.81115477974 205.99312824623 21450.495184475
+100	227877090 14 479 479 0.1 0.1 1 1 1 1 1
+101	227877104 14 479 479 0.1 0.1 1 0 0 0 0
+102	227877118 56 479 479 0.1 0.1 2 88.898218391046 104.81278991689 193.71100830793 18888.614163264
+103	227877174 14 479 479 0.1 0.1 1 1 1 1 1
+104	227877188 14 479 479 0.1 0.1 1 0 0 0 0
+105	227877202 56 479 479 0.1 0.1 2 93.766369930529 117.88708492089 211.65345485142 22689.496921093
+106	227877258 14 479 479 0.1 0.1 1 1 1 1 1
+107	227877272 14 479 479 0.1 0.1 1 0 0 0 0
+108	227877286 56 479 479 0.1 0.1 2 88.787312357802 103.97943375183 192.76674610963 18694.909479072
+109	227877342 14 479 479 0.1 0.1 1 1 1 1 1
+110	227877356 14 479 479 0.1 0.1 1 0 0 0 0
+111	227877370 56 479 479 0.1 0.1 2 93.205322117507 108.53032991279 201.7356520303 20466.064582007
+112	227877426 14 479 479 0.1 0.1 1 1 1 1 1
+113	227877440 14 479 479 0.1 0.1 1 0 0 0 0
+114	227877454 56 479 479 0.1 0.1 2 87.817955718993 102.48001258195 190.29796830095 18214.146325461
+115	227877510 14 479 479 0.1 0.1 1 1 1 1 1
+116	227877524 14 479 479 0.1 0.1 1 0 0 0 0
+117	227877538 56 479 479 0.1 0.1 2 92.438701613204 112.65641958982 205.09512120302 21236.382430732
+118	227877594 14 479 479 0.1 0.1 1 1 1 1 1
+119	227877608 14 479 479 0.1 0.1 1 0 0 0 0
+120	227877622 56 479 479 0.1 0.1 2 89.096997819037 106.53620259822 195.63320041726 19288.237484415
+121	227877678 14 479 479 0.1 0.1 1 1 1 1 1
+122	227877692 14 479 479 0.1 0.1 1 0 0 0 0
+123	227877706 56 479 479 0.1 0.1 2 93.704355830123 108.12871405586 201.83306988598 20472.325104911
+124	227877762 14 479 479 0.1 0.1 1 1 1 1 1
+125	227877776 14 479 479 0.1 0.1 1 0 0 0 0
+126	227877790 56 479 479 0.1 0.1 2 90.691460051767 106.45756921913 197.1490292709 19558.154970367
+127	227877846 14 479 479 0.1 0.1 1 1 1 1 1
+128	227877860 14 479 479 0.1 0.1 1 0 0 0 0
+129	227877874 56 479 479 0.1 0.1 2 91.862031427935 105.55348695218 197.41551838012 19580.171425832
+130	227877930 14 479 479 0.1 0.1 1 1 1 1 1
+131	227877944 14 479 479 0.1 0.1 1 0 0 0 0
+132	227877958 55 479 479 0.1 0.1 2 98.099417815232 136.4578940907 234.55731190593 28244.252635356
+133	227878013 14 479 479 0.1 0.1 1 1 1 1 1
+134	227878027 14 479 479 0.1 0.1 1 0 0 0 0
+135	227878041 56 479 479 0.1 0.1 2 91.575098023122 105.94877480591 197.52387282904 19611.141460819
+136	227878097 14 479 479 0.1 0.1 1 1 1 1 1
+137	227878111 14 479 479 0.1 0.1 1 0 0 0 0
+138	227878125 56 479 479 0.1 0.1 2 91.927560093462 112.66230837162 204.58986846508 21143.472032359
+139	227878181 14 479 479 0.1 0.1 1 1 1 1 1
+140	227878195 14 479 479 0.1 0.1 1 0 0 0 0
+141	227878209 56 479 479 0.1 0.1 2 98.445784188146 123.11474475291 221.56052894105 24848.812799992
+142	227878265 14 479 479 0.1 0.1 1 1 1 1 1
+143	227878279 14 479 479 0.1 0.1 1 0 0 0 0
+144	227878293 56 479 479 0.1 0.1 2 91.359132752479 110.32313458326 201.68226733574 20517.685161562
+145	227878349 14 479 479 0.1 0.1 1 1 1 1 1
+146	227878363 267103 59036226 59154532 199.602 200 7288 102.02438658446 152.44858495781 866199.87726824 104074353.03473
+147	228145466 165980 59036227 59154533 199.602 200 7288 1 1 7288 7288
+148	228311446 16 10989 10989 0.2 0.2 1 0 0 0 0
+149	228311462 60 10989 10989 0.2 0.2 2 97.456319344738 116.85849870097 214.3148180457 23153.642898867
+150	228311522 16 10989 10989 0.2 0.2 1 1 1 1 1
+151	228311538 16 10989 10989 0.2 0.2 1 0 0 0 0
+152	228311554 60 10989 10989 0.2 0.2 2 94.899527015195 132.09314449349 226.99267150869 26454.519049886
+153	228311614 16 10989 10989 0.2 0.2 1 1 1 1 1
+154	228311630 16 10989 10989 0.2 0.2 1 0 0 0 0
+155	228311646 59 10989 10989 0.2 0.2 2 90.807487898637 111.7616423312 202.56913022984 20736.664555028
+156	228311705 16 10989 10989 0.2 0.2 1 1 1 1 1
+157	228311721 16 10989 10989 0.2 0.2 1 0 0 0 0
+158	228311737 60 10989 10989 0.2 0.2 2 88.017369667485 103.29455042975 191.31192009723 18416.821511666
+159	228311797 16 10989 10989 0.2 0.2 1 1 1 1 1
+160	228311813 16 10989 10989 0.2 0.2 1 0 0 0 0
+161	228311829 60 10989 10989 0.2 0.2 2 95.740530864179 141.39439562136 237.13492648554 29158.624363286
+162	228311889 16 10989 10989 0.2 0.2 1 1 1 1 1
+163	228311905 16 10989 10989 0.2 0.2 1 0 0 0 0
+164	228311921 60 10989 10989 0.2 0.2 2 94.783133013536 122.86807866818 217.65121168172 24080.407059472
+165	228311981 16 10989 10989 0.2 0.2 1 1 1 1 1
+166	228311997 16 10989 10989 0.2 0.2 1 0 0 0 0
+167	228312013 60 10989 10989 0.2 0.2 2 90.822890045035 104.70115189126 195.5240419363 19211.12856349
+168	228312073 16 10989 10989 0.2 0.2 1 1 1 1 1
+169	228312089 16 10989 10989 0.2 0.2 1 0 0 0 0
+170	228312105 60 10989 10989 0.2 0.2 2 91.021239800718 111.67782359224 202.69906339296 20756.80237716
+171	228312165 16 10989 10989 0.2 0.2 1 1 1 1 1
+172	228312181 16 10989 10989 0.2 0.2 1 0 0 0 0
+173	228312197 59 10989 10989 0.2 0.2 2 93.93278048239 118.63422123158 212.56700171397 22897.445696377
+174	228312256 16 10989 10989 0.2 0.2 1 1 1 1 1
+175	228312272 16 10989 10989 0.2 0.2 1 0 0 0 0
+176	228312288 60 10989 10989 0.2 0.2 2 91.553517042365 114.52419502894 206.0777120713 21497.837729853
+177	228312348 16 10989 10989 0.2 0.2 1 1 1 1 1
+178	228312364 16 10989 10989 0.2 0.2 1 0 0 0 0
+179	228312380 59 10989 10989 0.2 0.2 2 94.544846931271 112.1563548689 206.70120180017 21517.776018736
+180	228312439 16 10989 10989 0.2 0.2 1 1 1 1 1
+181	228312455 16 10989 10989 0.2 0.2 1 0 0 0 0
+182	228312471 59 10989 10989 0.2 0.2 2 88.704828501763 105.4541367676 194.15896526937 18989.121560927
+183	228312530 16 10989 10989 0.2 0.2 1 1 1 1 1
+184	228312546 16 10989 10989 0.2 0.2 1 0 0 0 0
+185	228312562 59 10989 10989 0.2 0.2 2 100.0456795582 125.09489559185 225.14057515005 25657.870901399
+186	228312621 16 10989 10989 0.2 0.2 1 1 1 1 1
+187	228312637 16 10989 10989 0.2 0.2 1 0 0 0 0
+188	228312653 59 10989 10989 0.2 0.2 2 92.69261908717 105.88836150354 198.58098059071 19804.266735144
+189	228312712 16 10989 10989 0.2 0.2 1 1 1 1 1
+190	228312728 16 10989 10989 0.2 0.2 1 0 0 0 0
+191	228312744 60 10989 10989 0.2 0.2 2 95.028007618886 115.24737955484 210.27538717372 22312.280726272
+192	228312804 16 10989 10989 0.2 0.2 1 1 1 1 1
+193	228312820 16 10989 10989 0.2 0.2 1 0 0 0 0
+194	228312836 60 10989 10989 0.2 0.2 2 94.850191260295 110.78961079382 205.63980205411 21270.89664196
+195	228312896 16 10989 10989 0.2 0.2 1 1 1 1 1
+196	228312912 16 10989 10989 0.2 0.2 1 0 0 0 0
+197	228312928 60 10989 10989 0.2 0.2 2 93.214789426163 117.63361167319 210.84840109936 22526.663563044
+198	228312988 16 10989 10989 0.2 0.2 1 1 1 1 1
+199	228313004 16 26021 26021 0.3 0.3 1 0 0 0 0
+200	228313020 60 26021 26021 0.3 0.3 2 89.882671720786 108.54627433036 198.42894605114 19861.188346667
+201	228313080 16 26021 26021 0.3 0.3 1 1 1 1 1
+202	228313096 16 26021 26021 0.3 0.3 1 0 0 0 0
+203	228313112 60 26021 26021 0.3 0.3 2 98.429139106323 118.65925988405 217.08839899038 23768.315381443
+204	228313172 16 26021 26021 0.3 0.3 1 1 1 1 1
+205	228313188 16 26021 26021 0.3 0.3 1 0 0 0 0
+206	228313204 60 26021 26021 0.3 0.3 2 94.085404897027 127.63744698341 221.72285188044 25143.381287081
+207	228313264 16 26021 26021 0.3 0.3 1 1 1 1 1
+208	228313280 16 26021 26021 0.3 0.3 1 0 0 0 0
+209	228313296 60 26021 26021 0.3 0.3 2 95.698197504731 117.62092324297 213.3191207477 22992.826590182
+210	228313356 16 26021 26021 0.3 0.3 1 1 1 1 1
+211	228313372 16 26021 26021 0.3 0.3 1 0 0 0 0
+212	228313388 60 26021 26021 0.3 0.3 2 96.320345127303 144.31304882539 240.63339395269 30103.864946721
+213	228313448 16 26021 26021 0.3 0.3 1 1 1 1 1
+214	228313464 16 26021 26021 0.3 0.3 1 0 0 0 0
+215	228313480 60 26021 26021 0.3 0.3 2 94.202320788305 126.89693198742 221.09925277573 24976.908589723
+216	228313540 16 26021 26021 0.3 0.3 1 1 1 1 1
+217	228313556 16 26021 26021 0.3 0.3 1 0 0 0 0
+218	228313572 60 26021 26021 0.3 0.3 2 97.122704603199 116.13940835898 213.26211296218 22921.181923414
+219	228313632 16 26021 26021 0.3 0.3 1 1 1 1 1
+220	228313648 16 26021 26021 0.3 0.3 1 0 0 0 0
+221	228313664 60 26021 26021 0.3 0.3 2 90.398606338601 104.92733663685 195.32594297545 19181.654001664
+222	228313724 16 26021 26021 0.3 0.3 1 1 1 1 1
+223	228313740 16 26021 26021 0.3 0.3 1 0 0 0 0
+224	228313756 60 26021 26021 0.3 0.3 2 90.016609240769 104.94084516441 194.95745440518 19115.570923027
+225	228313816 16 26021 26021 0.3 0.3 1 1 1 1 1
+226	228313832 16 26021 26021 0.3 0.3 1 0 0 0 0
+227	228313848 60 26021 26021 0.3 0.3 2 93.233815492705 115.64560439407 208.87941988677 22066.450166997
+228	228313908 16 26021 26021 0.3 0.3 1 1 1 1 1
+229	228313924 16 26021 26021 0.3 0.3 1 0 0 0 0
+230	228313940 60 26021 26021 0.3 0.3 2 92.154114403283 116.72340101061 208.8775154139 22116.733144938
+231	228314000 16 26021 26021 0.3 0.3 1 1 1 1 1
+232	228314016 16 26021 26021 0.3 0.3 1 0 0 0 0
+233	228314032 59 26021 26021 0.3 0.3 2 90.04776989225 108.91393576081 198.96170565306 19970.846265477
+234	228314091 16 26021 26021 0.3 0.3 1 1 1 1 1
+235	228314107 16 44245 44245 0.4 0.4 1 0 0 0 0
+236	228314123 60 44245 44245 0.4 0.4 2 90.185485184395 109.77676138536 199.96224656976 20184.359078203
+237	228314183 16 44245 44245 0.4 0.4 1 1 1 1 1
+238	228314199 16 44245 44245 0.4 0.4 1 0 0 0 0
+239	228314215 60 44245 44245 0.4 0.4 2 92.792927339331 115.65984868537 208.4527760247 21987.727962124
+240	228314275 16 44245 44245 0.4 0.4 1 1 1 1 1
+241	228314291 16 44245 44245 0.4 0.4 1 0 0 0 0
+242	228314307 60 44245 44245 0.4 0.4 2 90.356725945018 107.72414974425 198.08087568926 19768.830361624
+243	228314367 16 44245 44245 0.4 0.4 1 1 1 1 1
+244	228314383 16 44245 44245 0.4 0.4 1 0 0 0 0
+245	228314399 60 44245 44245 0.4 0.4 2 94.869862200989 123.34387414055 218.21373634153 24214.002042033
+246	228314459 16 44245 44245 0.4 0.4 1 1 1 1 1
+247	228314475 16 44245 44245 0.4 0.4 1 0 0 0 0
+248	228314491 60 44245 44245 0.4 0.4 2 93.560049883235 116.99283745228 210.55288733551 22440.806949289
+249	228314551 16 44245 44245 0.4 0.4 1 1 1 1 1
+250	228314567 16 44245 44245 0.4 0.4 1 0 0 0 0
+251	228314583 60 44245 44245 0.4 0.4 2 90.690221019923 104.79691800787 195.48713902779 19207.110212591
+252	228314643 16 44245 44245 0.4 0.4 1 1 1 1 1
+253	228314659 16 44245 44245 0.4 0.4 1 0 0 0 0
+254	228314675 60 44245 44245 0.4 0.4 2 100.40281574977 123.34387414055 223.74668989032 25294.436698481
+255	228314735 16 44245 44245 0.4 0.4 1 1 1 1 1
+256	228314751 16 44245 44245 0.4 0.4 1 0 0 0 0
+257	228314767 60 44245 44245 0.4 0.4 2 91.080983543557 104.44675765457 195.52774119813 19204.870747815
+258	228314827 16 44245 44245 0.4 0.4 1 1 1 1 1
+259	228314843 16 44245 44245 0.4 0.4 1 0 0 0 0
+260	228314859 60 44245 44245 0.4 0.4 2 99.226639132567 119.62973891275 218.85637804532 24157.200345877
+261	228314919 16 44245 44245 0.4 0.4 1 1 1 1 1
+262	228314935 16 64939 64939 0.5 0.5 1 0 0 0 0
+263	228314951 60 64939 64939 0.5 0.5 2 90.540009040597 110.90519880001 201.44520784061 20497.456357941
+264	228315011 16 64939 64939 0.5 0.5 1 1 1 1 1
+265	228315027 16 64939 64939 0.5 0.5 1 0 0 0 0
+266	228315043 60 64939 64939 0.5 0.5 2 90.516393322779 104.88764664228 195.40403996506 19194.635878319
+267	228315103 16 64939 64939 0.5 0.5 1 1 1 1 1
+268	158	241237867 1201580 63632012 64161878 170.154 171.558 32768 102.03843731862 150.99537283401 3734668.4193822 429344635.39962
+159	242439447 746344 63632013 64161879 170.154 171.558 32768 1 1 32768 32768
+158	243185791 1202003 64161880 64692389 171.558 172.964 32768 101.80267299691 141.3795632043 3735035.8112294 429350125.96478
+159	244387794 746309 64161881 64692390 171.558 172.964 32768 1 1 32768 32768
+158	245134103 1201636 64692391 65222321 172.964 174.368 32768 101.78165359808 141.43238094693 3738457.3096636 430210160.07428
+159	246335739 746304 64692392 65222322 172.964 174.368 32768 1 1 32768 32768
+158	247082043 1201882 65222323 65752191 174.368 175.772 32768 101.91522543318 147.80097819434 3744036.7878759 431691758.58456
+159	248283925 746349 65222324 65752192 174.368 175.772 32768 1 1 32768 32768
+158	249030274 1201569 65752193 66282808 175.772 177.178 32768 102.03843731862 149.98934499723 3747043.0399316 432540503.10342
+159	250231843 746294 65752194 66282809 175.772 177.178 32768 1 1 32768 32768
+158	250978137 1201493 66282810 66812676 177.178 178.582 32768 102.03843731862 153.23041974627 3744896.6002905 431955717.14725
+159	252179630 746334 66282811 66812677 177.178 178.582 32768 1 1 32768 32768
+158	252925964 1201498 66812678 67342548 178.582 179.986 32768 102.03843731862 150.74543924397 3741627.0727634 430993873.28932
+159	254127462 746424 66812679 67342549 178.582 179.986 32768 1 1 32768 32768
+158	254873886 1200857 67342550 67872484 179.986 181.39 32768 102.03843731862 141.37792378708 3740108.9034355 430568155.02485
+159	256074743 746200 67342551 67872485 179.986 181.39 32768 1 1 32768 32768
+158	256820943 1201387 67872486 68402352 181.39 182.794 32768 102.03843731862 147.64962329584 3742394.6257408 431271020.16981
+159	258022330 746413 67872487 68402353 181.39 182.794 32768 1 1 32768 32768
+158	258768743 1201567 68402354 68932284 182.794 184.198 32768 102.03843731862 153.2171670898 3746839.3096312 432574570.75526
+159	259970310 746284 68402355 68932285 182.794 184.198 32768 1 1 32768 32768
+158	260716594 1201248 68932286 69462813 184.198 185.604 32768 102.03843731862 153.22790364819 3746721.8748824 432509570.28421
+159	261917842 746334 68932287 69462814 184.198 185.604 32768 1 1 32768 32768
+158	262664176 1201503 69462815 69992745 185.604 187.008 32768 102.03843731862 153.16066956693 3743932.4624566 431686014.77077
+159	263865679 746204 69462816 69992746 185.604 187.008 32768 1 1 32768 32768
+158	264611883 1201429 69992747 70522619 187.008 188.412 32768 102.03843731862 147.47892123634 3744035.6302922 431687205.69775
+159	265813312 746384 69992748 70522620 187.008 188.412 32768 1 1 32768 32768
+158	266559696 1201048 70522621 71052489 188.412 189.816 32768 102.03843731862 153.20947793463 3747475.667245 432693727.99404
+159	267760744 746369 70522622 71052490 188.412 189.816 32768 1 1 32768 32768
+158	268507113 1201703 71052491 71582429 189.816 191.22 32768 102.03843731862 151.54163052277 3747407.1530965 432600953.73836
+159	269708816 746289 71052492 71582430 189.816 191.22 32768 1 1 32768 32768
+158	270455105 1201654 71582431 72112301 191.22 192.624 32768 102.03843731862 153.22948680016 3748504.655922 432915170.29725
+159	271656759 746339 71582432 72112302 191.22 192.624 32768 1 1 32768 32768
+158	272403098 1201622 72112303 72642239 192.624 194.028 32768 102.03843731862 149.42803185572 3747667.3012285 432716145.8365
+159	273604720 746324 72112304 72642240 192.624 194.028 32768 1 1 32768 32768
+158	274351044 1201723 72642241 73172115 194.028 195.432 32768 102.03843731862 152.77015589006 3745508.5292265 432152965.16558
+159	275552767 746279 72642242 73172116 194.028 195.432 32768 1 1 32768 32768
+28	276299046 717226 61249390 73615819 163.841 196.608 32768 0 0 0 0
+29	277016272 717226 61249390 73615819 163.841 196.608 32768 0 0 0 0
+30	277733498 717226 61249391 73615820 163.841 196.608 32768 0 0 0 0
+31	278450724 717226 61249391 73615820 163.841 196.608 32768 0 0 0 0
+158	279167950 1202109 73172117 73702632 195.432 196.838 32768 102.03843731862 153.22364420209 3744918.3885119 432017581.67482
+159	280370059 746384 73172118 73702633 195.432 196.838 32768 1 1 32768 32768
+158	281116443 1201689 73702634 74232574 196.838 198.242 32768 102.03843731862 153.22852362726 3742000.9092018 431236077.26093
+159	282318132 746269 73702635 74232575 196.838 198.242 32768 1 1 32768 32768
+158	283064401 1201438 74232576 74762448 198.242 199.646 32768 102.03843731862 150.67284547916 3738895.87018 430361636.55652
+159	284265839 746374 74232577 74762449 198.242 199.646 32768 1 1 32768 32768
+0	285012213 8 0 0 0 0 1 0 0 0 0
+1	285012221 8 0 0 0 0 1 0 0 0 0
+2	285012229 8 0 0 0 0 1 0 0 0 0
+3	285012237 8 0 0 0 0 1 0 0 0 0
+4	285012245 8 0 0 0 0 1 0 0 0 0
+5	285012253 8 0 0 0 0 1 0 0 0 0
+6	285012261 8 0 0 0 0 1 0 0 0 0
+7	285012269 157 0 72 0 0.0000005052 9 0 1 4 4
+8	285012426 8 0 0 0 0 1 0 0 0 0
+9	285012434 8 0 0 0 0 1 0 0 0 0
+10	285012442 166 0 71 0 0.0000005052 9 0 1 4 4
+11	285012608 9 0 0 0 0 1 0 0 0 0
+12	285012617 79 27 68 0 0.0000004708 4 36 172 416 52800
+13	285012696 79 27 68 0 0.0000004708 4 36 172 416 52800
+14	285012775 146 27 68 0 0.0000004708 8 0 1 4 4
+15	285012921 79 27 68 0 0.0000004708 4 36 172 416 52800
+16	285013000 73 27 68 0 0.0000004708 4 0 0 0 0
+17	285013073 79 27 68 0 0.0000004708 4 43 179 444 58820
+18	285013152 79 28 66 0 0.0000004708 4 36 172 416 52800
+19	285013231 79 28 66 0 0.0000004708 4 36 172 416 52800
+20	285013310 146 28 66 0 0.0000004708 8 0 1 4 4
+21	285013456 79 28 66 0 0.0000004708 4 36 172 416 52800
+22	285013535 73 28 66 0 0.0000004708 4 0 0 0 0
+23	285013608 79 28 66 0 0.0000004708 4 43 179 444 58820
+24	285013687 90 31 74 0.0000001292 0.0000005552 4 43 179 444 58820
+25	285013777 90 31 74 0.0000001292 0.0000005552 4 36 172 416 52800
+26	285013867 90 32 73 0.0000001292 0.0000005552 4 43 179 444 58820
+27	285013957 90 32 73 0.0000001292 0.0000005552 4 36 172 416 52800
+28	285014047 74242 73616258 74895992 196.609 200 3392 0 0 0 0
+29	285088289 74242 73616258 74895992 196.609 200 3392 0 0 0 0
+30	285162531 74242 73616259 74895993 196.609 200 3392 0 0 0 0
+31	285236773 74242 73616259 74895993 196.609 200 3392 0 0 0 0
+32	285311015 13 479 479 0.1 0.1 1 0 0 0 0
+33	285311028 54 479 479 0.1 0.1 2 91.195922054129 112.99755086595 204.19347292008 21085.142701005
+34	285311082 13 479 479 0.1 0.1 1 1 1 1 1
+35	285311095 13 479 479 0.1 0.1 1 0 0 0 0
+36	285311108 54 479 479 0.1 0.1 2 89.224404545768 106.85109808771 196.07550263347 19378.151529096
+37	285311162 13 479 479 0.1 0.1 1 1 1 1 1
+38	285311175 13 479 479 0.1 0.1 1 0 0 0 0
+39	285311188 53 479 479 0.1 0.1 2 93.877719941755 126.0802543104 219.95797425215 24709.256828438
+40	285311241 13 479 479 0.1 0.1 1 1 1 1 1
+41	285311254 13 479 479 0.1 0.1 1 0 0 0 0
+42	285311267 54 479 479 0.1 0.1 2 93.621327247874 119.60033799858 213.22166524645 23069.193765027
+43	285311321 13 479 479 0.1 0.1 1 1 1 1 1
+44	285311334 13 479 479 0.1 0.1 1 0 0 0 0
+45	285311347 54 479 479 0.1 0.1 2 97.715048418117 143.58476682533 241.29981524345 30164.815951639
+46	285311401 13 479 479 0.1 0.1 1 1 1 1 1
+47	285311414 13 479 479 0.1 0.1 1 0 0 0 0
+48	285311427 54 479 479 0.1 0.1 2 94.341322772537 116.93904153055 211.28036430309 22575.024616556
+49	285311481 13 479 479 0.1 0.1 1 1 1 1 1
+50	285311494 13 479 479 0.1 0.1 1 0 0 0 0
+51	285311507 54 479 479 0.1 0.1 2 98.134339954621 118.17200525817 216.3063452128 23594.971505067
+52	285311561 13 479 479 0.1 0.1 1 1 1 1 1
+53	285311574 13 479 479 0.1 0.1 1 0 0 0 0
+54	285311587 54 479 479 0.1 0.1 2 88.483342459031 104.63797918634 193.12132164537 18778.408580922
+55	285311641 13 479 479 0.1 0.1 1 1 1 1 1
+56	285311654 13 479 479 0.1 0.1 1 0 0 0 0
+57	285311667 54 479 479 0.1 0.1 2 92.067698129094 114.76602052861 206.8337186577 21647.700506764
+58	285311721 13 479 479 0.1 0.1 1 1 1 1 1
+59	285311734 13 479 479 0.1 0.1 1 0 0 0 0
+60	285311747 54 479 479 0.1 0.1 2 90.950864541433 110.23062684599 201.18149138742 20422.850855694
+61	285311801 13 479 479 0.1 0.1 1 1 1 1 1
+62	285311814 13 479 479 0.1 0.1 1 0 0 0 0
+63	285311827 54 479 479 0.1 0.1 2 94.648609974242 131.46041667975 226.10902665399 26240.20052367
+64	285311881 13 479 479 0.1 0.1 1 1 1 1 1
+65	285311894 13 479 479 0.1 0.1 1 0 0 0 0
+66	285311907 54 479 479 0.1 0.1 2 88.296008108549 103.75208944553 192.04809755408 18560.681112217
+67	285311961 13 479 479 0.1 0.1 1 1 1 1 1
+68	285311974 13 479 479 0.1 0.1 1 0 0 0 0
+69	285311987 53 479 479 0.1 0.1 2 94.611375852706 120.6559035683 215.26727942101 23509.159506625
+70	285312040 13 479 479 0.1 0.1 1 1 1 1 1
+71	285312053 13 479 479 0.1 0.1 1 0 0 0 0
+72	285312066 54 479 479 0.1 0.1 2 95.200590687862 111.62292196286 206.82351265072 21522.829174844
+73	285312120 13 479 479 0.1 0.1 1 1 1 1 1
+74	285312133 13 479 479 0.1 0.1 1 0 0 0 0
+75	285312146 54 479 479 0.1 0.1 2 92.504197810066 117.94726081563 210.45145862569 22468.582946394
+76	285312200 13 479 479 0.1 0.1 1 1 1 1 1
+77	285312213 13 479 479 0.1 0.1 1 0 0 0 0
+78	285312226 54 479 479 0.1 0.1 2 89.562505623159 105.75026477276 195.31277039592 19204.560913008
+79	285312280 13 479 479 0.1 0.1 1 1 1 1 1
+80	285312293 13 479 479 0.1 0.1 1 0 0 0 0
+81	285312306 53 479 479 0.1 0.1 2 94.291465781462 109.4776804231 203.76914620456 20876.243030038
+82	285312359 13 479 479 0.1 0.1 1 1 1 1 1
+83	285312372 13 479 479 0.1 0.1 1 0 0 0 0
+84	285312385 54 479 479 0.1 0.1 2 88.660958310649 105.33205913988 193.99301745053 18955.608211209
+85	285312439 13 479 479 0.1 0.1 1 1 1 1 1
+86	285312452 13 479 479 0.1 0.1 1 0 0 0 0
+87	285312465 54 479 479 0.1 0.1 2 88.982721272865 104.21717276198 193.19989403485 18779.143783626
+88	285312519 13 479 479 0.1 0.1 1 1 1 1 1
+89	285312532 13 479 479 0.1 0.1 1 0 0 0 0
+90	285312545 53 479 479 0.1 0.1 2 92.95223036766 114.54255432849 207.49478469615 21760.113882417
+91	285312598 13 479 479 0.1 0.1 1 1 1 1 1
+92	285312611 13 479 479 0.1 0.1 1 0 0 0 0
+93	285312624 53 479 479 0.1 0.1 2 89.03200257406 106.35860904521 195.39061161927 19238.85120038
+94	285312677 13 479 479 0.1 0.1 1 1 1 1 1
+95	285312690 13 479 479 0.1 0.1 1 0 0 0 0
+96	285312703 53 479 479 0.1 0.1 2 90.04776989225 108.91393576081 198.96170565306 19970.846265477
+97	285312756 13 479 479 0.1 0.1 1 1 1 1 1
+98	285312769 13 479 479 0.1 0.1 1 0 0 0 0
+99	285312782 54 479 479 0.1 0.1 2 90.061564568067 106.72519777588 196.78676234395 19501.353252749
+100	285312836 14 479 479 0.1 0.1 1 1 1 1 1
+101	285312850 14 479 479 0.1 0.1 1 0 0 0 0
+102	285312864 56 479 479 0.1 0.1 2 90.835528991657 111.91560512518 202.75113411684 20776.195997729
+103	285312920 14 479 479 0.1 0.1 1 1 1 1 1
+104	285312934 14 479 479 0.1 0.1 1 0 0 0 0
+105	285312948 56 479 479 0.1 0.1 2 91.421987042774 110.56811420172 201.9901012445 20583.287592974
+106	285313004 14 479 479 0.1 0.1 1 1 1 1 1
+107	285313018 14 479 479 0.1 0.1 1 0 0 0 0
+108	285313032 56 479 479 0.1 0.1 2 91.432218414403 112.24169634522 203.67391475962 20958.048962631
+109	285313088 14 479 479 0.1 0.1 1 1 1 1 1
+110	285313102 14 479 479 0.1 0.1 1 0 0 0 0
+111	285313116 56 479 479 0.1 0.1 2 94.670152135091 112.51514284212 207.18529497721 21622.095074065
+112	285313172 14 479 479 0.1 0.1 1 1 1 1 1
+113	285313186 14 479 479 0.1 0.1 1 0 0 0 0
+114	285313200 56 479 479 0.1 0.1 2 90.728359780824 104.77177052866 195.50013030948 19208.759168228
+115	285313256 14 479 479 0.1 0.1 1 1 1 1 1
+116	285313270 14 479 479 0.1 0.1 1 0 0 0 0
+117	285313284 56 479 479 0.1 0.1 2 95.000537690349 124.07767171721 219.07820940756 24420.370780218
+118	285313340 14 479 479 0.1 0.1 1 1 1 1 1
+119	285313354 14 479 479 0.1 0.1 1 0 0 0 0
+120	285313368 56 479 479 0.1 0.1 2 99.572687409684 125.28302764941 224.85571505909 25610.557094989
+121	285313424 14 479 479 0.1 0.1 1 1 1 1 1
+122	285313438 14 479 479 0.1 0.1 1 0 0 0 0
+123	285313452 56 479 479 0.1 0.1 2 94.927983555426 132.13393585667 227.0619194121 26470.699066874
+124	285313508 14 479 479 0.1 0.1 1 1 1 1 1
+125	285313522 14 479 479 0.1 0.1 1 0 0 0 0
+126	285313536 56 479 479 0.1 0.1 2 90.239356732767 104.95390012184 195.1932568546 19158.462654328
+127	285313592 14 479 479 0.1 0.1 1 1 1 1 1
+128	285313606 14 479 479 0.1 0.1 1 0 0 0 0
+129	285313620 56 479 479 0.1 0.1 2 96.854234800957 152.62150013487 249.47573493582 32674.065102296
+130	285313676 14 479 479 0.1 0.1 1 1 1 1 1
+131	285313690 14 479 479 0.1 0.1 1 0 0 0 0
+132	285313704 56 479 479 0.1 0.1 2 98.959894368241 123.73644196343 222.69633633167 25103.767763142
+133	285313760 14 479 479 0.1 0.1 1 1 1 1 1
+134	285313774 14 479 479 0.1 0.1 1 0 0 0 0
+135	285313788 56 479 479 0.1 0.1 2 90.550709820589 110.65695060844 201.20766042903 20444.391766971
+136	285313844 14 479 479 0.1 0.1 1 1 1 1 1
+137	285313858 14 479 479 0.1 0.1 1 0 0 0 0
+138	285313872 56 479 479 0.1 0.1 2 89.872780417906 104.90274476333 194.77552518123 19081.702518925
+139	285313928 14 479 479 0.1 0.1 1 1 1 1 1
+140	285313942 14 479 479 0.1 0.1 1 0 0 0 0
+141	285313956 56 479 479 0.1 0.1 2 91.108549881337 109.37628307511 200.48483295645 20263.939160806
+142	285314012 14 479 479 0.1 0.1 1 1 1 1 1
+143	285314026 14 479 479 0.1 0.1 1 0 0 0 0
+144	285314040 56 479 479 0.1 0.1 2 93.126423153351 108.32856071746 201.45498387081 20407.607756452
+145	285314096 14 479 479 0.1 0.1 1 1 1 1 1
+146	285314110 14 479 479 0.1 0.1 1 0 0 0 0
+147	285314124 54 479 479 0.1 0.1 2 91.31667713151 106.2061024309 197.52277956241 19618.471715903
+148	285314178 14 479 479 0.1 0.1 1 1 1 1 1
+149	285314192 14 479 479 0.1 0.1 1 0 0 0 0
+150	285314206 56 479 479 0.1 0.1 2 99.086862308253 130.54084703912 229.62770934738 26859.119027786
+151	285314262 14 479 479 0.1 0.1 1 1 1 1 1
+152	285314276 14 479 479 0.1 0.1 1 0 0 0 0
+153	285314290 54 479 479 0.1 0.1 2 91.188457996996 110.294117458 201.482575455 20480.127217709
+154	285314344 14 479 479 0.1 0.1 1 1 1 1 1
+155	285314358 14 479 479 0.1 0.1 1 0 0 0 0
+156	285314372 56 479 479 0.1 0.1 2 96.307127258437 117.44628360105 213.75341085949 23068.692292471
+157	285314428 14 479 479 0.1 0.1 1 1 1 1 1
+158	285314442 302972 74762450 74896044 199.646 200 8267 102.03843731862 151.65918939368 943302.31758519 108574749.72993
+159	285617414 188246 74762451 74896045 199.646 200 8267 1 1 8267 8267
+160	285805660 16 12053 12053 0.2 0.2 1 0 0 0 0
+161	285805676 60 12053 12053 0.2 0.2 2 99.529576440857 119.84119190217 219.37076834303 24268.04786303
+162	285805736 16 12053 12053 0.2 0.2 1 1 1 1 1
+163	285805752 16 12053 12053 0.2 0.2 1 0 0 0 0
+164	285805768 59 12053 12053 0.2 0.2 2 92.90953681415 116.17052256303 209.08005937718 22127.772343588
+165	285805827 16 12053 12053 0.2 0.2 1 1 1 1 1
+166	285805843 16 12053 12053 0.2 0.2 1 0 0 0 0
+167	285805859 60 12053 12053 0.2 0.2 2 94.394006852526 128.74920557994 223.14321243246 25486.58646714
+168	285805919 16 12053 12053 0.2 0.2 1 1 1 1 1
+169	285805935 16 12053 12053 0.2 0.2 1 0 0 0 0
+170	285805951 60 12053 12053 0.2 0.2 2 88.546866442796 103.65267545082 192.19954189362 18584.424684951
+171	285806011 16 12053 12053 0.2 0.2 1 1 1 1 1
+172	285806027 16 12053 12053 0.2 0.2 1 0 0 0 0
+173	285806043 59 12053 12053 0.2 0.2 2 93.621702250674 107.9415675635 201.56326981417 20416.405140379
+174	285806102 16 12053 12053 0.2 0.2 1 1 1 1 1
+175	285806118 16 12053 12053 0.2 0.2 1 0 0 0 0
+176	285806134 60 12053 12053 0.2 0.2 2 95.022919343691 128.82402050026 223.84693984395 25624.983458448
+177	285806194 16 12053 12053 0.2 0.2 1 1 1 1 1
+178	285806210 16 12053 12053 0.2 0.2 1 0 0 0 0
+179	285806226 60 12053 12053 0.2 0.2 2 92.574290554341 105.63365859149 198.20794914583 19728.469099063
+180	285806286 16 12053 12053 0.2 0.2 1 1 1 1 1
+181	285806302 16 12053 12053 0.2 0.2 1 0 0 0 0
+182	285806318 60 12053 12053 0.2 0.2 2 88.320371326183 104.16289772812 192.4832690543 18650.397254314
+183	285806378 16 12053 12053 0.2 0.2 1 1 1 1 1
+184	285806394 16 12053 12053 0.2 0.2 1 0 0 0 0
+185	285806410 60 12053 12053 0.2 0.2 2 87.574457820678 102.33797745354 189.91243527421 18142.347291866
+186	285806470 16 12053 12053 0.2 0.2 1 1 1 1 1
+187	285806486 16 12053 12053 0.2 0.2 1 0 0 0 0
+188	285806502 60 12053 12053 0.2 0.2 2 88.690238159561 104.46467795866 193.15491611823 18778.827285807
+189	285806562 16 12053 12053 0.2 0.2 1 1 1 1 1
+190	285806578 16 12053 12053 0.2 0.2 1 0 0 0 0
+191	285806594 59 12053 12053 0.2 0.2 2 91.584974896357 114.6401553792 206.22513027555 21530.172852132
+192	285806653 16 12053 12053 0.2 0.2 1 1 1 1 1
+193	285806669 16 12053 12053 0.2 0.2 1 0 0 0 0
+194	285806685 59 12053 12053 0.2 0.2 2 97.600414583483 117.1563018155 214.75671639898 23251.439981952
+195	285806744 16 12053 12053 0.2 0.2 1 1 1 1 1
+196	285806760 16 12053 12053 0.2 0.2 1 0 0 0 0
+197	285806776 60 12053 12053 0.2 0.2 2 87.840160470585 102.51897102918 190.35913149976 18226.033212379
+198	285806836 16 12053 12053 0.2 0.2 1 1 1 1 1
+199	285806852 16 12053 12053 0.2 0.2 1 0 0 0 0
+200	285806868 60 12053 12053 0.2 0.2 2 93.314929428653 115.97333466522 209.28826409387 22157.490407645
+201	285806928 16 12053 12053 0.2 0.2 1 1 1 1 1
+202	285806944 16 12053 12053 0.2 0.2 1 0 0 0 0
+203	285806960 60 12053 12053 0.2 0.2 2 93.849745186609 123.86776228612 217.71750747273 24150.997205362
+204	285807020 16 12053 12053 0.2 0.2 1 1 1 1 1
+205	285807036 16 12053 12053 0.2 0.2 1 0 0 0 0
+206	285807052 60 12053 12053 0.2 0.2 2 92.438701613204 112.65641958982 205.09512120302 21236.382430732
+207	285807112 16 12053 12053 0.2 0.2 1 1 1 1 1
+208	285807128 16 12053 12053 0.2 0.2 1 0 0 0 0
+209	285807144 60 12053 12053 0.2 0.2 2 94.269243378464 120.22153374415 214.49077712262 23339.907422944
+210	285807204 16 12053 12053 0.2 0.2 1 1 1 1 1
+211	285807220 16 12053 12053 0.2 0.2 1 0 0 0 0
+212	285807236 60 12053 12053 0.2 0.2 2 95.433281702905 140.41018602936 235.84346773226 28822.531597385
+213	285807296 16 12053 12053 0.2 0.2 1 1 1 1 1
+214	285807312 16 12053 12053 0.2 0.2 1 0 0 0 0
+215	285807328 60 12053 12053 0.2 0.2 2 89.096997819037 106.53620259822 195.63320041726 19288.237484415
+216	285807388 16 12053 12053 0.2 0.2 1 1 1 1 1
+217	285807404 16 12053 12053 0.2 0.2 1 0 0 0 0
+218	285807420 60 12053 12053 0.2 0.2 2 91.080983543557 104.44675765457 195.52774119813 19204.870747815
+219	285807480 16 12053 12053 0.2 0.2 1 1 1 1 1
+220	285807496 16 12053 12053 0.2 0.2 1 0 0 0 0
+221	285807512 59 12053 12053 0.2 0.2 2 90.860366891115 104.6698513482 195.53021823932 19211.384052843
+222	285807571 16 12053 12053 0.2 0.2 1 1 1 1 1
+223	285807587 16 12053 12053 0.2 0.2 1 0 0 0 0
+224	285807603 60 12053 12053 0.2 0.2 2 88.418800482803 104.65745513668 193.07625561949 18771.067194504
+225	285807663 16 12053 12053 0.2 0.2 1 1 1 1 1
+226	285807679 16 12053 12053 0.2 0.2 1 0 0 0 0
+227	285807695 59 12053 12053 0.2 0.2 2 90.366516482195 106.3940006016 196.7605170838 19485.790665141
+228	285807754 16 12053 12053 0.2 0.2 1 1 1 1 1
+229	285807770 16 12053 12053 0.2 0.2 1 0 0 0 0
+230	285807786 60 12053 12053 0.2 0.2 2 94.601829712013 116.38700615938 210.98883587139 22495.441387604
+231	285807846 16 12053 12053 0.2 0.2 1 1 1 1 1
+232	285807862 16 12053 12053 0.2 0.2 1 0 0 0 0
+233	285807878 60 12053 12053 0.2 0.2 2 93.959989966064 117.50236175038 211.46235171644 22635.28473134
+234	285807938 16 12053 12053 0.2 0.2 1 1 1 1 1
+235	285807954 16 30277 30277 0.3 0.3 1 0 0 0 0
+236	285807970 60 30277 30277 0.3 0.3 2 95.144765980575 119.43781063691 214.58257661749 23317.917103238
+237	285808030 16 30277 30277 0.3167	279195114 1201082 74106913 74635767 164.494 165.65 32768 102.58144375702 148.71344531229 3888159.7798967 464783587.00506
+168	280396196 746316 74106914 74635768 164.494 165.65 32768 1 1 32768 32768
+167	281142512 1201239 74635769 75164648 165.65 166.806 32768 102.5481620748 148.88274250528 3889631.2379351 465186331.03808
+168	282343751 746318 74635770 75164649 165.65 166.806 32768 1 1 32768 32768
+167	283090069 1201236 75164650 75694315 166.806 167.964 32768 102.87132395018 153.19778688282 3891033.6761241 465614586.98552
+168	284291305 746404 75164651 75694316 166.806 167.964 32768 1 1 32768 32768
+167	285037709 1201117 75694317 76223322 167.964 169.12 32768 103.16934772712 153.19778688282 3889548.5310716 465267071.34223
+168	286238826 746198 75694318 76223323 167.964 169.12 32768 1 1 32768 32768
+167	286985024 1201571 76223324 76752179 169.12 170.276 32768 102.86855451487 148.89585143653 3886574.8286594 464515095.23183
+168	288186595 746388 76223325 76752180 169.12 170.276 32768 1 1 32768 32768
+167	288932983 1201151 76752181 77281062 170.276 171.432 32768 102.81213002303 148.88620279556 3884363.7154165 463980941.34219
+168	290134134 746256 76752182 77281063 170.276 171.432 32768 1 1 32768 32768
+167	290880390 1201240 77281064 77810727 171.432 172.59 32768 103.0510738455 148.41253937806 3883185.6563636 463703102.69806
+168	292081630 746423 77281065 77810728 171.432 172.59 32768 1 1 32768 32768
+167	292828053 1201203 77810729 78339580 172.59 173.746 32768 102.82299800613 148.89583045506 3883366.1471186 463789713.97913
+168	294029256 746310 77810730 78339581 172.59 173.746 32768 1 1 32768 32768
+167	294775566 1201409 78339582 78868434 173.746 174.902 32768 102.81043475076 153.2172419879 3884037.5797325 464014817.57526
+168	295976975 746257 78339583 78868435 173.746 174.902 32768 1 1 32768 32768
+167	296723232 1201686 78868436 79397460 174.902 176.058 32768 103.04735245973 152.50369660873 3881255.8179596 463225697.04622
+168	297924918 746354 78868437 79397461 174.902 176.058 32768 1 1 32768 32768
+167	298671272 1201376 79397462 79927130 176.058 177.216 32768 103.34795875322 142.4130404587 3877488.7242919 462172552.18796
+168	299872648 746257 79397463 79927131 176.058 177.216 32768 1 1 32768 32768
+167	300618905 1201319 79927132 80455988 177.216 178.372 32768 103.71823869666 142.4130404587 3875779.995832 461722296.38097
+168	301820224 746377 79927133 80455989 177.216 178.372 32768 1 1 32768 32768
+167	302566601 1201496 80455990 80984846 178.372 179.528 32768 103.14491718856 142.4130404587 3875324.5689445 461635852.49467
+168	303768097 746355 80455991 80984847 178.372 179.528 32768 1 1 32768 32768
+167	304514452 1201709 80984848 81513728 179.528 180.684 32768 102.83858084746 145.46594423621 3875857.4152614 461838764.4109
+168	305716161 746330 80984849 81513729 179.528 180.684 32768 1 1 32768 32768
+167	306462491 1201676 81513730 82043392 180.684 181.842 32768 102.81038267363 152.37102920305 3876893.3660978 462157423.1443
+168	307664167 746304 81513731 82043393 180.684 181.842 32768 1 1 32768 32768
+167	308410471 1201952 82043394 82572244 181.842 182.998 32768 102.99933024604 153.22501027391 3877310.1352982 462281043.51008
+168	309612423 746453 82043395 82572245 181.842 182.998 32768 1 1 32768 32768
+167	310358876 1201601 82572246 83101236 182.998 184.154 32768 102.81762598571 153.19579729274 3876718.947852 462093717.79162
+168	311560477 746158 82572247 83101237 182.998 184.154 32768 1 1 32768 32768
+167	312306635 1201716 83101238 83630113 184.154 185.31 32768 102.80985120461 153.22302814631 3874870.3882978 461565821.46463
+168	313508351 746328 83101239 83630114 184.154 185.31 32768 1 1 32768 32768
+167	314254679 1201935 83630115 84159776 185.31 186.468 32768 103.18242856744 145.87431047213 3872652.9486463 460929984.38189
+168	315456614 746356 83630116 84159777 185.31 186.468 32768 1 1 32768 32768
+167	316202970 1201656 84159778 84688629 186.468 187.624 32768 102.85480400326 142.4130404587 3871352.2226081 460607723.61312
+168	317404626 746305 84159779 84688630 186.468 187.624 32768 1 1 32768 32768
+167	318150931 1201881 84688631 85217480 187.624 188.78 32768 102.72019921889 143.75494332463 3871985.5310687 460832633.50126
+168	319352812 746405 84688632 85217481 187.624 188.78 32768 1 1 32768 32768
+167	320099217 1201692 85217482 85746357 188.78 189.936 32768 102.5483449256 153.22771728678 3874158.0628698 461494571.86665
+168	321300909 746280 85217483 85746358 188.78 189.936 32768 1 1 32768 32768
+167	322047189 1201675 85746359 86276162 189.936 191.094 32768 102.60851058935 153.22771728678 3875156.4451672 461794729.24814
+168	323248864 746306 85746360 86276163 189.936 191.094 32768 1 1 32768 32768
+167	323995170 1201606 86276164 86805015 191.094 192.25 32768 102.54755841517 145.01530979492 3872922.4923923 461139883.99515
+168	325196776 746286 86276165 86805016 191.094 192.25 32768 1 1 32768 32768
+167	325943062 1202118 86805017 87333871 192.25 193.406 32768 102.65478188017 148.93259560011 3871695.9568384 460786117.08858
+168	327145180 746348 86805018 87333872 192.25 193.406 32768 1 1 32768 32768
+167	327891528 1202056 87333873 87862751 193.406 194.562 32768 103.33470092755 153.2119989742 3871932.2506949 460850630.42283
+168	329093584 746354 87333874 87862752 193.406 194.562 32768 1 1 32768 32768
+167	329839938 1202002 87862753 88392415 194.562 195.72 32768 103.16582106058 153.05459149017 3871557.7229203 460699305.29461
+168	331041940 746316 87862754 88392416 194.562 195.72 32768 1 1 32768 32768
+28	331788256 717226 73808158 88798650 163.841 196.608 32768 0 0 0 0
+29	332505482 717226 73808158 88798650 163.841 196.608 32768 0 0 0 0
+30	333222708 717226 73808159 88798651 163.841 196.608 32768 0 0 0 0
+31	333939934 717226 73808159 88798651 163.841 196.608 32768 0 0 0 0
+167	334657160 1202120 88392417 88921269 195.72 196.876 32768 102.83473778615 143.81755780304 3871335.6206232 460546609.39317
+168	335859280 746367 88392418 88921270 195.72 196.876 32768 1 1 32768 32768
+167	336605647 1201920 88921271 89450267 196.876 198.032 32768 102.81213653977 142.41191573592 3873129.6610872 460962788.92861
+168	337807567 746161 88921272 89450268 196.876 198.032 32768 1 1 32768 32768
+167	338553728 1202391 89450269 89979149 198.032 199.188 32768 103.03432163614 143.88286454941 3875926.9765102 461681901.47304
+168	339756119 746450 89450270 89979150 198.032 199.188 32768 1 1 32768 32768
+0	340502569 8 0 0 0 0 1 0 0 0 0
+1	340502577 8 0 0 0 0 1 0 0 0 0
+2	340502585 8 0 0 0 0 1 0 0 0 0
+3	340502593 8 0 0 0 0 1 0 0 0 0
+4	340502601 8 0 0 0 0 1 0 0 0 0
+5	340502609 8 0 0 0 0 1 0 0 0 0
+6	340502617 8 0 0 0 0 1 0 0 0 0
+7	340502625 157 0 72 0 0.0000005052 9 0 1 4 4
+8	340502782 8 0 0 0 0 1 0 0 0 0
+9	340502790 8 0 0 0 0 1 0 0 0 0
+10	340502798 166 0 71 0 0.0000005052 9 0 1 4 4
+11	340502964 9 0 0 0 0 1 0 0 0 0
+12	340502973 79 27 68 0 0.0000004708 4 36 172 416 52800
+13	340503052 79 27 68 0 0.0000004708 4 36 172 416 52800
+14	340503131 146 27 68 0 0.0000004708 8 0 1 4 4
+15	340503277 79 27 68 0 0.0000004708 4 36 172 416 52800
+16	340503356 73 27 68 0 0.0000004708 4 0 0 0 0
+17	340503429 79 27 68 0 0.0000004708 4 43 179 444 58820
+18	340503508 79 28 66 0 0.0000004708 4 36 172 416 52800
+19	340503587 79 28 66 0 0.0000004708 4 36 172 416 52800
+20	340503666 146 28 66 0 0.0000004708 8 0 1 4 4
+21	340503812 79 28 66 0 0.0000004708 4 36 172 416 52800
+22	340503891 73 28 66 0 0.0000004708 4 0 0 0 0
+23	340503964 79 28 66 0 0.0000004708 4 43 179 444 58820
+24	340504043 90 31 74 0.0000001292 0.0000005552 4 43 179 444 58820
+25	340504133 90 31 74 0.0000001292 0.0000005552 4 36 172 416 52800
+26	340504223 90 32 73 0.0000001292 0.0000005552 4 43 179 444 58820
+27	340504313 90 32 73 0.0000001292 0.0000005552 4 36 172 416 52800
+28	340504403 74242 88799188 90350413 196.609 200 3392 0 0 0 0
+29	340578645 74242 88799188 90350413 196.609 200 3392 0 0 0 0
+30	340652887 74242 88799189 90350414 196.609 200 3392 0 0 0 0
+31	340727129 74242 88799189 90350414 196.609 200 3392 0 0 0 0
+32	340801371 13 479 479 0.1 0.1 1 0 0 0 0
+33	340801384 54 479 479 0.1 0.1 2 91.195922054129 112.99755086595 204.19347292008 21085.142701005
+34	340801438 13 479 479 0.1 0.1 1 1 1 1 1
+35	340801451 13 479 479 0.1 0.1 1 0 0 0 0
+36	340801464 54 479 479 0.1 0.1 2 89.224404545768 106.85109808771 196.07550263347 19378.151529096
+37	340801518 13 479 479 0.1 0.1 1 1 1 1 1
+38	340801531 13 479 479 0.1 0.1 1 0 0 0 0
+39	340801544 53 479 479 0.1 0.1 2 93.877719941755 126.0802543104 219.95797425215 24709.256828438
+40	340801597 13 479 479 0.1 0.1 1 1 1 1 1
+41	340801610 13 479 479 0.1 0.1 1 0 0 0 0
+42	340801623 54 479 479 0.1 0.1 2 93.621327247874 119.60033799858 213.22166524645 23069.193765027
+43	340801677 13 479 479 0.1 0.1 1 1 1 1 1
+44	340801690 13 479 479 0.1 0.1 1 0 0 0 0
+45	340801703 54 479 479 0.1 0.1 2 97.715048418117 143.58476682533 241.29981524345 30164.815951639
+46	340801757 13 479 479 0.1 0.1 1 1 1 1 1
+47	340801770 13 479 479 0.1 0.1 1 0 0 0 0
+48	340801783 54 479 479 0.1 0.1 2 94.341322772537 116.93904153055 211.28036430309 22575.024616556
+49	340801837 13 479 479 0.1 0.1 1 1 1 1 1
+50	340801850 13 479 479 0.1 0.1 1 0 0 0 0
+51	340801863 54 479 479 0.1 0.1 2 98.134339954621 118.17200525817 216.3063452128 23594.971505067
+52	340801917 13 479 479 0.1 0.1 1 1 1 1 1
+53	340801930 13 479 479 0.1 0.1 1 0 0 0 0
+54	340801943 54 479 479 0.1 0.1 2 88.483342459031 104.63797918634 193.12132164537 18778.408580922
+55	340801997 13 479 479 0.1 0.1 1 1 1 1 1
+56	340802010 13 479 479 0.1 0.1 1 0 0 0 0
+57	340802023 54 479 479 0.1 0.1 2 92.067698129094 114.76602052861 206.8337186577 21647.700506764
+58	340802077 13 479 479 0.1 0.1 1 1 1 1 1
+59	340802090 13 479 479 0.1 0.1 1 0 0 0 0
+60	340802103 54 479 479 0.1 0.1 2 90.950864541433 110.23062684599 201.18149138742 20422.850855694
+61	340802157 13 479 479 0.1 0.1 1 1 1 1 1
+62	340802170 13 479 479 0.1 0.1 1 0 0 0 0
+63	340802183 54 479 479 0.1 0.1 2 94.648609974242 131.46041667975 226.10902665399 26240.20052367
+64	340802237 13 479 479 0.1 0.1 1 1 1 1 1
+65	340802250 13 479 479 0.1 0.1 1 0 0 0 0
+66	340802263 54 479 479 0.1 0.1 2 88.296008108549 103.75208944553 192.04809755408 18560.681112217
+67	340802317 13 479 479 0.1 0.1 1 1 1 1 1
+68	340802330 13 479 479 0.1 0.1 1 0 0 0 0
+69	340802343 53 479 479 0.1 0.1 2 94.611375852706 120.6559035683 215.26727942101 23509.159506625
+70	340802396 13 479 479 0.1 0.1 1 1 1 1 1
+71	340802409 13 479 479 0.1 0.1 1 0 0 0 0
+72	340802422 54 479 479 0.1 0.1 2 95.200590687862 111.62292196286 206.82351265072 21522.829174844
+73	340802476 13 479 479 0.1 0.1 1 1 1 1 1
+74	340802489 13 479 479 0.1 0.1 1 0 0 0 0
+75	340802502 54 479 479 0.1 0.1 2 92.504197810066 117.94726081563 210.45145862569 22468.582946394
+76	340802556 13 479 479 0.1 0.1 1 1 1 1 1
+77	340802569 13 479 479 0.1 0.1 1 0 0 0 0
+78	340802582 54 479 479 0.1 0.1 2 89.562505623159 105.75026477276 195.31277039592 19204.560913008
+79	340802636 13 479 479 0.1 0.1 1 1 1 1 1
+80	340802649 13 479 479 0.1 0.1 1 0 0 0 0
+81	340802662 53 479 479 0.1 0.1 2 94.291465781462 109.4776804231 203.76914620456 20876.243030038
+82	340802715 13 479 479 0.1 0.1 1 1 1 1 1
+83	340802728 13 479 479 0.1 0.1 1 0 0 0 0
+84	340802741 54 479 479 0.1 0.1 2 88.660958310649 105.33205913988 193.99301745053 18955.608211209
+85	340802795 13 479 479 0.1 0.1 1 1 1 1 1
+86	340802808 13 479 479 0.1 0.1 1 0 0 0 0
+87	340802821 54 479 479 0.1 0.1 2 88.982721272865 104.21717276198 193.19989403485 18779.143783626
+88	340802875 13 479 479 0.1 0.1 1 1 1 1 1
+89	340802888 13 479 479 0.1 0.1 1 0 0 0 0
+90	340802901 53 479 479 0.1 0.1 2 92.95223036766 114.54255432849 207.49478469615 21760.113882417
+91	340802954 13 479 479 0.1 0.1 1 1 1 1 1
+92	340802967 13 479 479 0.1 0.1 1 0 0 0 0
+93	340802980 53 479 479 0.1 0.1 2 89.03200257406 106.35860904521 195.39061161927 19238.85120038
+94	340803033 13 479 479 0.1 0.1 1 1 1 1 1
+95	340803046 13 479 479 0.1 0.1 1 0 0 0 0
+96	340803059 53 479 479 0.1 0.1 2 90.04776989225 108.91393576081 198.96170565306 19970.846265477
+97	340803112 13 479 479 0.1 0.1 1 1 1 1 1
+98	340803125 13 479 479 0.1 0.1 1 0 0 0 0
+99	340803138 54 479 479 0.1 0.1 2 90.061564568067 106.72519777588 196.78676234395 19501.353252749
+100	340803192 14 479 479 0.1 0.1 1 1 1 1 1
+101	340803206 14 479 479 0.1 0.1 1 0 0 0 0
+102	340803220 56 479 479 0.1 0.1 2 90.835528991657 111.91560512518 202.75113411684 20776.195997729
+103	340803276 14 479 479 0.1 0.1 1 1 1 1 1
+104	340803290 14 479 479 0.1 0.1 1 0 0 0 0
+105	340803304 56 479 479 0.1 0.1 2 91.421987042774 110.56811420172 201.9901012445 20583.287592974
+106	340803360 14 479 479 0.1 0.1 1 1 1 1 1
+107	340803374 14 479 479 0.1 0.1 1 0 0 0 0
+108	340803388 56 479 479 0.1 0.1 2 91.432218414403 112.24169634522 203.67391475962 20958.048962631
+109	340803444 14 479 479 0.1 0.1 1 1 1 1 1
+110	340803458 14 479 479 0.1 0.1 1 0 0 0 0
+111	340803472 56 479 479 0.1 0.1 2 94.670152135091 112.51514284212 207.18529497721 21622.095074065
+112	340803528 14 479 479 0.1 0.1 1 1 1 1 1
+113	340803542 14 479 479 0.1 0.1 1 0 0 0 0
+114	340803556 56 479 479 0.1 0.1 2 90.728359780824 104.77177052866 195.50013030948 19208.759168228
+115	340803612 14 479 479 0.1 0.1 1 1 1 1 1
+116	340803626 14 479 479 0.1 0.1 1 0 0 0 0
+117	340803640 56 479 479 0.1 0.1 2 95.000537690349 124.07767171721 219.07820940756 24420.370780218
+118	340803696 14 479 479 0.1 0.1 1 1 1 1 1
+119	340803710 14 479 479 0.1 0.1 1 0 0 0 0
+120	340803724 56 479 479 0.1 0.1 2 99.572687409684 125.28302764941 224.85571505909 25610.557094989
+121	340803780 14 479 479 0.1 0.1 1 1 1 1 1
+122	340803794 14 479 479 0.1 0.1 1 0 0 0 0
+123	340803808 56 479 479 0.1 0.1 2 94.927983555426 132.13393585667 227.0619194121 26470.699066874
+124	340803864 14 479 479 0.1 0.1 1 1 1 1 1
+125	340803878 14 479 479 0.1 0.1 1 0 0 0 0
+126	340803892 56 479 479 0.1 0.1 2 90.239356732767 104.95390012184 195.1932568546 19158.462654328
+127	340803948 14 479 479 0.1 0.1 1 1 1 1 1
+128	340803962 14 479 479 0.1 0.1 1 0 0 0 0
+129	340803976 56 479 479 0.1 0.1 2 96.854234800957 152.62150013487 249.47573493582 32674.065102296
+130	340804032 14 479 479 0.1 0.1 1 1 1 1 1
+131	340804046 14 479 479 0.1 0.1 1 0 0 0 0
+132	340804060 56 479 479 0.1 0.1 2 96.977425159815 119.49032434425 216.46774950407 23682.558602523
+133	340804116 14 479 479 0.1 0.1 1 1 1 1 1
+134	340804130 14 479 479 0.1 0.1 1 0 0 0 0
+135	340804144 56 479 479 0.1 0.1 2 93.989505845571 117.47012345553 211.4596293011 22633.257113753
+136	340804200 14 479 479 0.1 0.1 1 1 1 1 1
+137	340804214 14 479 479 0.1 0.1 1 0 0 0 0
+138	340804228 56 479 479 0.1 0.1 2 91.862031427935 105.55348695218 197.41551838012 19580.171425832
+139	340804284 14 479 479 0.1 0.1 1 1 1 1 1
+140	340804298 14 479 479 0.1 0.1 1 0 0 0 0
+141	340804312 56 479 479 0.1 0.1 2 97.522467700509 121.04700211371 218.56946981422 24163.008427113
+142	340804368 14 479 479 0.1 0.1 1 1 1 1 1
+143	340804382 14 479 479 0.1 0.1 1 0 0 0 0
+144	340804396 56 479 479 0.1 0.1 2 93.126423153351 108.32856071746 201.45498387081 20407.607756452
+145	340804452 14 479 479 0.1 0.1 1 1 1 1 1
+146	340804466 14 479 479 0.1 0.1 1 0 0 0 0
+147	340804480 56 479 479 0.1 0.1 2 98.987017947573 131.16350942342 230.15052737099 27002.29592642
+148	340804536 14 479 479 0.1 0.1 1 1 1 1 1
+149	340804550 14 479 479 0.1 0.1 1 0 0 0 0
+150	340804564 55 479 479 0.1 0.1 2 90.861676164613 106.4394389744 197.30111513901 19585.198364628
+151	340804619 14 479 479 0.1 0.1 1 1 1 1 1
+152	340804633 14 479 479 0.1 0.1 1 0 0 0 0
+153	340804647 56 479 479 0.1 0.1 2 98.148178679307 136.21825364153 234.36643232083 28188.477603213
+154	340804703 14 479 479 0.1 0.1 1 1 1 1 1
+155	340804717 14 479 479 0.1 0.1 1 0 0 0 0
+156	340804731 55 479 479 0.1 0.1 2 90.507121294848 110.5478861541 201.05500744895 20412.37413822
+157	340804786 14 479 479 0.1 0.1 1 1 1 1 1
+158	340804800 14 479 479 0.1 0.1 1 0 0 0 0
+159	340804814 56 479 479 0.1 0.1 2 89.934608872463 104.92189190965 194.85650078211 19096.837274943
+160	340804870 14 479 479 0.1 0.1 1 1 1 1 1
+161	340804884 14 479 479 0.1 0.1 1 0 0 0 0
+162	340804898 56 479 479 0.1 0.1 2 99.842426857939 126.15789758388 226.00032444182 25884.325323668
+163	340804954 14 479 479 0.1 0.1 1 1 1 1 1
+164	340804968 14 479 479 0.1 0.1 1 0 0 0 0
+165	340804982 54 479 479 0.1 0.1 2 91.152497329346 110.294117458 201.44661478735 20473.570115216
+166	340805036 14 479 479 0.1 0.1 1 1 1 1 1
+167	340805050 843930 89979151 90350511 199.188 200 23013 103.33921979714 148.80643215003 2724742.4119705 324957442.84969
+168	341648980 524055 89979152 90350512 199.188 200 23013 1 1 23013 23013
+169	342173035 16 12851 12851 0.2 0.2 1 0 0 0 0
+170	342173051 60 12851 12851 0.2 0.2 2 100.44865545781 119.89074605387 220.33940151169 24463.723372637
+171	342173111 16 12851 12851 0.2 0.2 1 1 1 1 1
+172	342173127 16 12851 12851 0.2 0.2 1 0 0 0 0
+173	342173143 60 12851 12851 0.2 0.2 2 93.785528005283 123.36255765252 217.1480856578 24014.045893801
+174	342173203 16 12851 12851 0.2 0.2 1 1 1 1 1
+175	342173219 16 12851 12851 0.2 0.2 1 0 0 0 0
+176	342173235 59 12851 12851 0.2 0.2 2 87.928925775643 102.6729859549 190.60191173055 18273.238032954
+177	342173294 16 12851 12851 0.2 0.2 1 1 1 1 1
+178	342173310 16 12851 12851 0.2 0.2 1 0 0 0 0
+179	342173326 60 12851 12851 0.2 0.2 2 92.732206252206 105.97391821978 198.70612447199 19829.733419255
+180	342173386 16 12851 12851 0.2 0.2 1 1 1 1 1
+181	342173402 16 12851 12851 0.2 0.2 1 0 0 0 0
+182	342173418 60 12851 12851 0.2 0.2 2 95.237936581864 119.16351874203 214.4014553239 23270.208763354
+183	342173478 16 12851 12851 0.2 0.2 1 1 1 1 1
+184	342173494 16 12851 12851 0.2 0.2 1 0 0 0 0
+185	342173510 60 12851 12851 0.2 0.2 2 88.484980228397 104.84180944245 193.32678967085 18821.396733186
+186	342173570 16 12851 12851 0.2 0.2 1 1 1 1 1
+187	342173586 16 12851 12851 0.2 0.2 1 0 0 0 0
+188	342173602 60 12851 12851 0.2 0.2 2 95.088043045947 124.58064392528 219.66868697122 24562.072771145
+189	342173662 16 12851 12851 0.2 0.2 1 1 1 1 1
+190	342173678 16 12851 12851 0.2 0.2 1 0 0 0 0
+191	342173694 60 12851 12851 0.2 0.2 2 93.274335556908 115.80874118632 209.08307674323 22111.766208743
+192	342173754 16 12851 12851 0.2 0.2 1 1 1 1 1
+193	342173770 16 12851 12851 0.2 0.2 1 0 0 0 0
+194	342173786 60 12851 12851 0.2 0.2 2 88.700067264209 103.86500042219 192.5650676864 18655.640245377
+195	342173846 16 12851 12851 0.2 0.2 1 1 1 1 1
+196	342173862 16 12851 12851 0.2 0.2 1 0 0 0 0
+197	342173878 60 12851 12851 0.2 0.2 2 97.217647267678 116.34781127283 213.56545854051 22988.08412824
+198	342173938 16 12851 12851 0.2 0.2 1 1 1 1 1
+199	342173954 16 12851 12851 0.2 0.2 1 0 0 0 0
+200	342173970 60 12851 12851 0.2 0.2 2 93.812013075647 117.63361167319 211.44562474884 22638.360392585
+201	342174030 16 12851 12851 0.2 0.2 1 1 1 1 1
+202	342174046 16 12851 12851 0.2 0.2 1 0 0 0 0
+203	342174062 60 12851 12851 0.2 0.2 2 99.783447385034 119.94475823485 219.72820561989 24343.481400059
+204	342174122 16 12851 12851 0.2 0.2 1 1 1 1 1
+205	342174138 16 12851 12851 0.2 0.2 1 0 0 0 0
+206	342174154 60 12851 12851 0.2 0.2 2 95.606969459773 117.94726081563 213.5542302754 23052.248943192
+207	342174214 16 12851 12851 0.2 0.2 1 1 1 1 1
+208	342174230 16 12851 12851 0.2 0.2 1 0 0 0 0
+209	342174246 59 12851 12851 0.2 0.2 2 87.61908207261 102.45820997805 190.07729205066 18174.788335153
+210	342174305 16 12851 12851 0.2 0.2 1 1 1 1 1
+211	342174321 16 12851 12851 0.2 0.2 1 0 0 0 0
+212	342174337 60 12851 12851 0.2 0.2 2 91.152824408774 104.35949096904 195.51231537782 19199.740753014
+213	342174397 16 12851 12851 0.2 0.2 1 1 1 1 1
+214	342174413 16 12851 12851 0.2 0.2 1 0 0 0 0
+215	342174429 60 12851 12851 0.2 0.2 2 90.555324888146 104.87069329749 195.42601818564 19198.129178295
+216	342174489 16 12851 12851 0.2 0.2 1 1 1 1 1
+217	342174505 16 12851 12851 0.2 0.2 1 0 0 0 0
+218	342174521 59 12851 12851 0.2 0.2 2 91.133035446198 106.3334194116 197.4664548578 19612.026233401
+219	342174580 16 12851 12851 0.2 0.2 1 1 1 1 1
+220	342174596 16 12851 12851 0.2 0.2 1 0 0 0 0
+221	342174612 60 12851 12851 0.2 0.2 2 100.40281574977 123.34387414055 223.74668989032 25294.436698481
+222	342174672 16 12851 12851 0.2 0.2 1 1 1 1 1
+223	342174688 16 30011 30011 0.3 0.3 1 0 0 0 0
+224	342174704 60 30011 30011 0.3 0.3 2 90.896921752399 112.04771955078 202.94464130318 20816.941840593
+225	342174764 16 30011 30011 0.3 0.3 1 1 1 1 1
+226	342174780 16 30011 30011 0.3 0.3 1 0 0 0 0
+227	342174796 60 30011 30011 0.3 0.3 2 90.156059104872 109.68376845399 199.83982755886 20158.64405559
+228	342174856 16 30011 30011 0.3 0.3 1 1 1 1 1
+229	342174872 16 30011 30011 0.3 0.3 1 0 0 0 0
+230	342174888 60 30011 30011 0.3 0.3 2 88.504897572919 104.13739998489 192.64229755781 18677.714970007
+231	342174948 16 30011 30011 0.3 0.3 1 1 1 1 1
+232	342174964 16 30011 30011 0.3 0.3 1 0 0 0 0
+233	342174980 60 30011 30011 0.3 0.3 2 91.459255703447 114.17707279047 205.63632849391 21401.199404828
+234	342175040 16 30011 30011 0.3 0.3 1 1 1 1 1
+235	342175056 16 30011 30011 0.3 0.3 1 0 0 0 0
+236	342175072 60 30011 30011 0.3 0.3 2 90.550013424546 107.41764310745 197.967656532 19737.854981945
+237	342175132 16 30011 30011 0.3 0.3 1 1 1 1 1
+238	342175148 16 30011 30011 0.3 0.3 1 0 0 0 0
+239	342175164 60 30011 30011 0.3 0.3 2 94.567664026796 121.72346480284 216.29112882964 23759.644963094
+240	342175224 16 30011 30011 0.3 0.3 1 1 1 1 1
+241	342175240 16 30011 30011 0.3 0.3 1 0 0 0 0
+242	342175256 60 30011 30011 0.3 0.3 2 94.266275791532 127.49760554965 221.76388134118 25141.770172499
+243	342175316 16 30011 30011 0.3 0.3 1 1 1 1 1
+244	342175332 16 30011 30011 0.3 0.3 1 0 0 0 0
+245	342175348 60 30011 30011 0.3 0.3 2 93.314929428653 115.97333466522 209.28826409387 22157.490407645
+246	342175408 16 30011 30011 0.3 0.3 1 1 1 1 1
+247	342175424 16 30011 30011 0.3 0.3 1 0 0 0 0
+248	342175440 60 30011 30011 0.3 0.3 2 93.849745186609 123.86776228612 217.71750747273 24150.997205362
+249	342175500 16 30011 30011 0.3 0.3 1 1 1 1 1
+250	342175516 16 30011 30011 0.3 0.3 1 0 0 0 0
+251	342175532 60 30011 30011 0.3 0.3 2 99.377864559214 119.74701427591 219.12487883512 24215.307392343
+252	342175592 16 30011 30011 0.3 0.3 1 1 1 1 1
+253	342175608 16 30011 30011 0.3 0.3 1 0 0 0 0
+254	342175624 59 30011 30011 0.3 0.3 2 90.279395759433 104.9501002445 195.22949600393 19164.892840019
+255	342175683 16 30011 30011 0.3 0.3 1 1 1 1 1
+256	342175699 16 30011 30011 0.3 0.3 1 0 0 0 0
+257	342175715 60 30011 30011 0.3 0.3 2 88.966851138427 106.17971383291 195.14656497133 19189.232231125
+258	342175775 16 30011 30011 0.3 0.3 1 1 1 1 1
+259	342175791 16 30011 30011 0.3 0.3 1 0 0 0 0
+260	342175807 60 30011 30011 0.3 0.3 2 93.064506764623 117.50236175038 210.566868515 22467.80743626
+261	342175867 16 30011 30011 0.3 0.3 1 1 1 1 1
+262	342175883 16 30011 30011 0.3 0.3 1 0 0 0 0
+263	342175899 60 30011 30011 0.3 0.3 2 97.217647267678 116.34781127283 213.56545854051 22988.08412824
+264	342175959 16 30011 30011 0.3 0.3 1 1 1 1 1
+265	342175975 16 50895 50895 0.4 0.4 1 0 0 0 0
+266	342175991 60 50895 50895 0.4 0.4 2 92.154114403283 116.72340101061 208.8775154139 22116.733144938
+267	342176051 16 50895 50895 0.4 0.4 1 1 1 1 1
+268	342176067 16 50895 50895 0.4 0.4 1 0 0 0 0
+269	342176083 59 50895 50895 0.4 0.4 2 90.860366891115 104.6698513482 195.53021823932 19211.384052843
+270	342176142 16 50895 50895 0.4 0.4 1 1 1 1 1
+271	342176158 16 50895 50895 0.4 0.4 1 0 0 0 0
+272	342176174 60 50895 50895 0.4 0.4 2 91.276376479958 104.19216313271 195.46853961267 19187.383761584
+273	342176234 16 50895 50895 0.4 0.4 1 1 1 1 1
+274	342176250 16 50895 50895 0.4 0.4 1 0 0 0 0
+275	342176266 60 50895 50895 0.4 0.4 2 90.299359556193 104.94748881532 195.24684837151 19167.9497449
+276	342176326 16 50895 50895 0.4 0.4 1 1 1 1 1
+277	342176342 16 94917 94917 0.6 0.6 1 0 0 0 0
+278	342176358 59 94917 94917 0.6 0.6 2 93.262824234071 117.8003109932 211.06313522727 22574.867654209
+279	342176417 16 94917 94917 0.6 0.6 1 1 1 1 1
+280	342176433 16 94917 94917 0.6 0.6 1 0 0 0 0
+281	342176449 60 94917 94917 0.6 0.6 2 87.994052918623 103.22857977133 191.22263268995 18399.093030651
+282	342176509 16 94917 94917 0.6 0.6 1 1 1 1 1
+283	342176525 16 94917 94917 0.6 0.6 1 0 0 0 0
+284	342176541 59 94917 94917 0.6 0.6 2 98.21341728546 122.69151210427 220.90492938973 24699.082477319
+285	342176600 16 94917 94917 0.6 0.6 1 1 1 1 1
+286	342176616 16 94917 94917 0.6 0.6 1 0 0 0 0
+287	342176632 60 94917 94917 0.6 0.6 2 95.000537690349 124.07767171721 219.07820940756 24420.370780218
+288	342176692 16 94917 94917 0.6 0.6 1 1 1 1 1
+289	342176708 17 117957 117957 0.7 0.7 1 0 0 0 0
+290	342176725 62 117957 117957 0.7 0.7 2 90.956615592241 112.23833340485 203.19494899709 20870.549405494
+291	342176787 17 117957 117957 0.7 0.7 1 1 1 1 1
+292	342176804 17 117957 117957 0.7 0.7 1 0 0 0 0
+293	342176821 62 117957 117957 0.7 0.7 2 94.956389532526 132.16319304135 227.11958257388 26483.825507939
+294	342176883 17 117957 117957 0.7 0.7 1 1 1 1 1
+295	342176900 17 117957 117957 0.7 0.7 1 0 0 0 0
+296	342176917 62 117957 117957 0.7 0.7 2 92.440441635171 117.73045462459 210.17089625976 22405.695195819
+297	342176979 17 117957 117957 0.7 0.7 1 1 1 1 1
+298	342176996 17 141865 141865 0.8 0.8 1 0 0 0 0
+299	342177013 62 141865 141865 0.8 0.8 2 92.446534522777 114.21306224738 206.65959677016 21590.985333196
+300	342177075 17 141865 141865 0.8 0.8 1 1 1 1 1
+301	342177092 17 141865 141865 0.8 0.8 1 0 0 0 0
+302	342177109 62 141865 141865 0.8 0.8 2 96.809439515467 152.17636062937 248.98580014483 32529.712313698
+303	342177171 17 141865 141865 0.8 0.8 1 1 1 1 1
+304	342177188 17 141865 141865 0.8 0.8 1 0 0 0 0
+305	342177205 62 141865 141865 0.8 0.8 2 89.494322020881 105.66847254437 195.16279456525 19175.059763838
+306	342177267 17 141865 141865 0.8 0.8 1 1 1 1 1
+307	342177284 17 141865 141865 0.8 0.8 1 0 0 0 0
+308	342177301 62 141865 141865 0.8 0.8 2 100.35169566931 123.58575957287 223.93745524218 25343.902792909
+309	342177363 17 141865 141865 0.8 0.8 1 1 1 1 1
+310	342177380 17 166775 166775 0.9 0.9 1 0 0 0 0
+311	342177397 62 166775 166775 0.9 0.9 2 89.698412265178 105.90189713219 195.60030939737 19261.01697909
+312	342177459 17 166775 166775 0.9 0.9 1 1 1 1 1
+313	342177476 17 166775 166775 0.9 0.9 1 0 0 0 0
+314	342177493 62 166775 166775 0.9 0.9 2 98.538979994288 123.26133032562 221.80031031991 24903.286131956
+315	342177555 17 166775 166775 0.9 0.9 1 1 1 1 1
+316	342177572 15 192219 192219 1 1 1 0 0 0 0
+317	342177587 58 192219 192219 1 1 2 92.771865829869 106.05980493907 198.83167076894 19855.301313269
+318	342177645 15 192219 192219 1 1 1 1 1 1 1
+319	342177660 17 243773 243773 1.2 1.2 1 0 0 0 0
+320	342177677 62 243773 243773 1.2 1.2 2 91.765054029775 113.32553559084 205.09058962061 21263.502158038
+321	342177739 17 243773 243773 1.2 1.2 1 1 1 1 1
+322	342177756 17 243773 243773 1.2 1.2 1 0 0 0 0
+323	342177773 62 243773 243773 1.2 1.2 2 87.973273467535 102.74885565008 190.72212911761 18296.624181994
+324	342177835 17 243773 243773 1.2 1.2 1 1 1 1 1
+325	342177852 17 243773 243773 1.2 1.2 1 0 0 0 0
+326	342177869 62 243773 243773 1.2 1.2 2 89.562505623159 105.75026477276 195.31277039592 19204.560913008
+327	342177931 17 243773 243773 1.2 1.2 1 1 1 1 1
+328	342177948 17 243773 243773 1.2 1.2 1 0 0 0 0
+329	342177965 62 243773 243773 1.2 1.2 2 90.419581426707 110.32313458326 200.74271600997 20346.894729658
+330	342178027 17 243773 243773 1.2 1.2 1 1 1 1 1
+331	342178044 17 297391 297391 1.4 1.4 1 0 0 0 0
+332	342178061 62 297391 297391 1.4 1.4 2 91.704602130373 113.04980071948 204.75440284985 21189.991494603
+333	342178123 17 297391 297391 1.4 1.4 1 1 1 1 1
+334	342178140 17 297391 297391 1.4 1.4 1 0 0 0 0
+335	342178157 62 297391 297391 1.4 1.4 2 94.586550173717 112.27539923876 206.86194941248 21552.380747989
+336	342178219 17 297391 297391 1.4 1.4 1 1 1 1 1
+337	342178236 17 297391 297391 1.4 1.4 1 0 0 0 0
+338	342178253 62 297391 297391 1.4 1.4 2 87.617911225587 102.12187957417 189.73979079976 18105.776655296
+339	342178315 17 297391 297391 1.4 1.4 1 1 1 1 1
+340	342178332 17 352551 352551 1.6 1.6 1 0 0 0 0
+341	342178349 62 352551 352551 1.6 1.6 2 91.862031427935 105.55348695218 197.41551838012 19580.171425832
+342	342178411 17 352551 352551 1.6 1.6 1 1 1 1 1
+343	342178428 17 380457 380457 1.7 1.7 1 0 0 0 0
+344	342178445 62 380457 380457 1.7 1.7 2 92.811597970368 106.14602290369 198.95762087406 19880.970896084
+345	342178507 17 380457 380457 1.7 1.7 1 1 1 1 1
+346	342178524 17 380457 380457 1.7 1.7 1 0 0 0 0
+347	342178541 62 380457 380457 1.7 1.7 2 92.332209004218 113.75669797518 206.0889069794 21465.823153815
+348	342178603 17 380457 380457 1.7 1.7 1 1 1 1 1
+349	342178620 17 380457 380457 1.7 1.7 1 0 0 0 0
+350	342178637 62 380457 380457 1.7 1.7 2 94.224569739386 117.14430675868 211.36887649807 22601.058148545
+351	342178699 17 380457 380457 1.7 1.7 1 1 1 1 1
+352	342178716 17 409105 409105 1.8 1.8 1 0 0 0 0
+353	342178733 62 409105 409105 1.8 1.8 2 90.332892809222 110.24435028239 200.57724309161 20313.848292468
+354	342178795 17 409105 409105 1.8 1.8 1 1 1 1 1
+355	342178812 17 409105 409105 1.8 1.8 1 0 0 0 0
+356	342178829 61 409105 409105 1.8 1.8 2 94.96480542582 113.37152110952 208.33632653534 21871.41606825
+357	342178890 17 409105 409105 1.8 1.8 1 1 1 1 1
+358	342178907 17 409105 409105 1.8 1.8 1 0 0 0 0
+359	342178924 62 409105 409105 1.8 1.8 2 95.637428498312 117.83924951331 213.47667801162 23032.60645563
+360	342178986 17 409105 409105 1.8 1.8 1 1 1 1 1
+361	342179003 17 556525 556525 2.3 2.3 1 0 0 0 0
+362	342179020 61 556525 556525 2.3 2.3 2 95.04957444296 113.62107590118 208.67065034414 21944.170490729
+363	342179081 17 556525 556525 2.3 2.3 1 1 1 1 1
+364	342179098 17 556525 556525 2.3 2.3 1 0 0 0 0
+365	342179115 62 556525 556525 2.3 2.3 2 94.489628683964 129.73322237133 224.22285105529 25758.998915682
+366	342179177 17 556525 556525 2.3 2.3 1 1 1 1 1
+367	342179194 17 586509 586509 2.4 2.4 1 0 0 0 0
+368	342179211 62 586509 586509 2.4 2.4 2 91.916305223441 114.03254474917 205.94884997261 21452.028427901
+369	342179273 17 586509 586509 2.4 2.4 1 1 1 1 1
+370	342179290 17 616757 616757 2.5 2.5 1 0 0 0 0
+371	342179307 62 616757 616757 2.5 2.5 2 92.007126576875 114.46935421221 206.47648078909 21568.544394694
+372	342179369 17 616757 616757 2.5 2.5 1 1 1 1 1
+373	342179386 17 616757 616757 2.5 2.5 1 0 0 0 0
+374	342179403 62 616757 616757 2.5 2.5 2 90.673467608578 107.83416339857 198.50763100715 19849.884524033
+375	342179465 17 616757 616757 2.5 2.5 1 1 1 1 1
+376	342179482 17 647591 647591 2.6 2.6 1 0 0 0 0
+377	342179499 62 647591 647591 2.6 2.6 2 96.276222960162 143.58476682533 239.86098978549 29885.696371759
+378	342179561 17 647591 647591 2.6 2.6 1 1 1 1 1
+379	342179578 17 647591 647591 2.6 2.6 1 0 0 0 0
+380	342179595 61 647591 647591 2.6 2.6 2 92.21844934464 113.31216994612 205.53061929076 21343.890257428
+381	342179656 17 647591 647591 2.6 2.6 1 1 1 1 1
+382	342179673 17 647591 647591 2.6 2.6 1 0 0 0 0
+383	342179690 62 647591 647591 2.6 2.6 2 92.542913843614 106.87489511272 199.41780895633 19986.434108021
+384	342179752 17 647591 647591 2.6 2.6 1 1 1 1 1
+385	342179769 17 679175 679175 2.7 2.7 1 0 0 0 0
+386	342179786 62 679175 679175 2.7 2.7 2 90.673467608578 107.83416339857 198.50763100715 19849.884524033
+387	342179848 17 679175 679175 2.7 2.7 1 1 1 1 1
+388	342179865 17 711021 711021 2.8 2.8 1 0 0 0 0
+389	342179882 62 711021 711021 2.8 2.8 2 94.525357987531 130.63823767595 225.16359566348 26001.392445748
+390	342179944 17 711021 711021 2.8 2.8 1 1 1 1 1
+391	342179961 17 711021 711021 2.8 2.8 1 0 0 0 0
+392	342179978 62 711021 711021 2.8 2.8 2 93.193369103432 115.48390123036 208.67727033379 22021.535488231
+393	342180040 17 711021 711021 2.8 2.8 1 1 1 1 1
+394	342180057 17 743455 743455 2.9 2.9 1 0 0 0 0
+395	342180074 62 743455 743455 2.9 2.9 2 87.662393465606 102.20257349892 189.86496696452 18130.06125792
+396	342180136 17 743455 743455 2.9 2.9 1 1 1 1 1
+397	342180153 15 776111 776111 3 3 1 0 0 0 0
+398	342180168 58 776111 776111 3 3 2 97.124120925611 152.62150013487 249.74562106048 32726.41716899
+399	342180226 15 776111 776111 3 3 1 1 1 1 1
+400	342180241 17 809093 809093 3.1 3.1 1 0 0 0 0
+401	342180258 61 809093 809093 3.1 3.1 2 88.297076083951 104.0954310472 192.39250713115 18632.232409877
+402	342180319 17 809093 809093 3.1 3.1 1 1 1 1 1
+403	342180336 17 809093 809093 3.1 3.1 1 0 0 0 0
+404	342180353 61 809093 809093 3.1 3.1 2 93.93278048239 118.63422123158 212.56700171397 22897.445696377
+405	342180414 17 809093 809093 3.1 3.1 1 1 1 1 1
+406	342180431 17 909495 909495 3.4 3.4 1 0 0 0 0
+407	342180448 62 909495 909495 3.4 3.4 2 94.871020736135 132.04098488389 226.91200562002 26435.332264623
+408	342180510 17 909495 909495 3.4 3.4 1 1 1 1 1
+409	342180527 17 976987 976987 3.6 3.6 1 0 0 0 0
+410	342180544 62 976987 976987 3.6 3.6 2 96.320345127303 144.31304882539 240.63339395269 30103.864946721
+411	342180606 17 976987 976987 3.6 3.6 1 1 1 1 1
+412	342180623 18 1010965 1010965 3.7 3.7 1 0 0 0 0
+413	342180641 63 1010965 1010965 3.7 3.7 2 91.748797808713 105.7234331868 197.47223099552 19595.286224149
+414	342180704 18 1010965 1010965 3.7 3.7 1 1 1 1 1
+415	342180722 18 1045271 1045271 3.8 3.8 1 0 0 0 0
+416	342180740 64 1045271 1045271 3.8 3.8 2 87.729088766928 102.32245764691 190.05154641383 18166.278354778
+417	342180804 18 1045271 1045271 3.8 3.8 1 1 1 1 1
+418	342180822 18 1079789 1079789 3.9 3.9 1 0 0 0 0
+419	342180840 64 1079789 1079789 3.9 3.9 2 92.399699252516 112.51919650481 204.91889575733 21198.274004044
+420	342180904 18 1079789 1079789 3.9 3.9 1 1 1 1 1
+421	342180922 16 1114569 1114569 4 4 1 0 0 0 0
+422	342180938 60 1114569 1114569 4 4 2 90.421553180728 110.52679006931 200.94834325004 20392.228602642
+423	342180998 16 1114569 1114569 4 4 1 1 1 1 1
+424	342181014 18 1149751 1149751 4.1 4.1 1 0 0 0 0
+425	342181032 64 1149751 1149751 4.1 4.1 2 93.308541822705 121.97736103987 215.28590286258 23584.96058333
+426	342181096 18 1149751 1149751 4.1 4.1 1 1 1 1 1
+427	342181114 18 1149751 1149751 4.1 4.1 1 0 0 0 0
+428	342181132 64 1149751 1149751 4.1 4.1 2 90.510369684582 110.81042393685 201.32079362144 20471.077073505
+429	342181196 18 1149751 1149751 4.1 4.1 1 1 1 1 1
+430	342181214 18 1185335 1185335 4.2 4.2 1 0 0 0 0
+431	342181232 64 1185335 1185335 4.2 4.2 2 95.013046471609 132.18667162029 227.1997180919 26500.795153866
+432	342181296 18 1185335 1185335 4.2 4.2 1 1 1 1 1
+433	342181314 18 1328785 1328785 4.6 4.6 1 0 0 0 0
+434	342181332 64 1328785 1328785 4.6 4.6 2 88.460072542396 104.56982260042 193.02989514282 18760.03223289
+435	342181396 18 1328785 1328785 4.6 4.6 1 1 1 1 1
+436	342181414 18 1364957 1364957 4.7 4.7 1 0 0 0 0
+437	342181432 64 1364957 1364957 4.7 4.7 2 90.344609839003 106.38527945773 196.72988929673 19479.97621226
+438	342181496 18 1364957 1364957 4.7 4.7 1 1 1 1 1
+439	342181514 18 1401343 1401343 4.8 4.8 1 0 0 0 0
+440	342181532 63 1401343 1401343 4.8 4.8 2 92.71550659257 115.32764020846 208.04314680103 21896.629758768
+441	342181595 18 1401343 1401343 4.8 4.8 1 1 1 1 1
+442	342181613 16 1474695 1474695 5 5 1 0 0 0 0
+443	342181629 60 1474695 1474695 5 5 2 94.871020736135 132.04098488389 226.91200562002 26435.332264623
+444	342181689 16 1474695 1474695 5 5 1 1 1 1 1
+445	342181705 16 1474695 1474695 5 5 1 0 0 0 0
+446	342181721 60 1474695 1474695 5 5 2 91.072184893887 110.37336724404 201.44555213793 20476.423058134
+447	342181781 16 1474695 1474695 5 5 1 1 1 1 1
+448	342181797 16 1474695 1474695 5 5 1 0 0 0 0
+449	342181813 60 1474695 1474695 5 5 2 91.523444372875 112.24562146048 203.76906583335 20975.620406924
+450	342181873 16 1474695 1474695 5 5 1 1 1 1 1
+451	342181889 18 1587171 1587171 5.3 5.3 1 0 0 0 0
+452	342181907 64 1587171 1587171 5.3 5.3 2 87.840160470585 102.51897102918 190.35913149976 18226.033212379
+453	342181971 18 1587171 1587171 5.3 5.3 1 1 1 1 1
+454	342181989 18 1587171 1587171 5.3 5.3 1 0 0 0 0
+455	342182007 64 1587171 1587171 5.3 5.3 2 91.886042354746 113.88907514503 205.77511749978 21413.766217009
+456	342182071 18 1587171 1587171 5.3 5.3 1 1 1 1 1
+457	342182089 18 1625161 1625161 5.4 5.4 1 0 0 0 0
+458	342182107 63 1625161 1625161 5.4 5.4 2 92.360767551698 112.3830166409 204.74378419259 21160.453812047
+459	342182170 18 1625161 1625161 5.4 5.4 1 1 1 1 1
+460	342182188 18 1625161 1625161 5.4 5.4 1 0 0 0 0
+461	342182206 64 1625161 1625161 5.4 5.4 2 91.855785484178 113.74665161275 205.60243709692 21375.786080027
+462	342182270 18 1625161 1625161 5.4 5.4 1 1 1 1 1
+463	342182288 16 1856371 1856371 6 6 1 0 0 0 0
+464	342182304 60 1856371 1856371 6 6 2 92.891280536675 106.31945740669 199.21073794336 19932.617022996
+465	342182364 16 1856371 1856371 6 6 1 1 1 1 1
+466	342182380 16 1856371 1856371 6 6 1 0 0 0 0
+467	342182396 60 1856371 1856371 6 6 2 90.747939107542 111.57096281146 202.318901919 20683.268194943
+468	342182456 16 1856371 1856371 6 6 1 1 1 1 1
+469	342182472 16 1856371 1856371 6 6 1 0 0 0 0
+470	342182488 60 1856371 1856371 6 6 2 95.068601650952 111.30829723808 206.37689888904 21427.576053909
+471	342182548 16 1856371 1856371 6 6 1 1 1 1 1
+472	342182564 18 1895763 1895763 6.1 6.1 1 0 0 0 0
+473	342182582 64 1895763 1895763 6.1 6.1 2 92.339568024097 105.13298518439 197.47255320849 19579.540396658
+474	342182646 18 1895763 1895763 6.1 6.1 1 1 1 1 1
+475	342182664 16 2252181 2252181 7 7 1 0 0 0 0
+476	342182680 60 2252181 2252181 7 7 2 87.640154095125 102.16230160053 189.80245569566 18117.932478136
+477	342182740 16 2252181 2252181 7 7 1 1 1 1 1
+478	342182756 16 2252181 2252181 7 7 1 0 0 0 0
+479	342182772 60 2252181 2252181 7 7 2 92.378510353769 105.21563136717 197.59414172093 19604.118259173
+480	342182832 16 2252181 2252181 7 7 1 1 1 1 1
+481	342182848 18 2332553 2332553 7.2 7.2 1 0 0 0 0
+482	342182866 63 2332553 2332553 7.2 7.2 2 92.676891693824 115.1639148137 207.84080650753 21851.733529247
+483	342182929 18 2332553 2332553 7.2 7.2 1 1 1 1 1
+484	342182947 18 2453757 2453757 7.5 7.5 1 0 0 0 0
+485	342182965 64 2453757 2453757 7.5 7.5 2 88.273778034163 104.02807042417 192.30184845833 18614.099324601
+486	342183029 18 2453757 2453757 7.5 7.5 1 1 1 1 1
+487	342183047 18 2453757 2453757 7.5 7.5 1 0 0 0 0
+488	342183065 64 2453757 2453757 7.5 7.5 2 90.421553180728 110.52679006931 200.94834325004 20392.228602642
+489	342183129 18 2453757 2453757 7.5 7.5 1 1 1 1 1
+490	342183147 18 2535639 2535639 7.7 7.7 1 0 0 0 0
+491	342183165 64 2535639 2535639 7.7 7.7 2 94.350307785247 129.53739848933 223.88770627458 25681.918186555
+492	342183229 18 2535639 2535639 7.7 7.7 1 1 1 1 1
+493	342183247 18 2700521 2700521 8.1 8.1 1 0 0 0 0
+494	342183265 63 2700521 2700521 8.1 8.1 2 93.02672179327 116.69682712953 209.7235489228 22272.120429701
+495	342183328 18 2700521 2700521 8.1 8.1 1 1 1 1 1
+496	342183346 18 2783471 2783471 8.3 8.3 1 0 0 0 0
+497	342183364 64 2783471 2783471 8.3 8.3 2 88.039746821556 102.86116216381 190.90090898536 18331.415702093
+498	342183428 18 2783471 2783471 8.3 8.3 1 1 1 1 1
+499	342183446 18 2825191 2825191 8.4 8.4 1 0 0 0 0
+500	342183464 63 2825191 2825191 8.4 8.4 2 94.984744116489 132.1807958839 227.16554000039 26493.864415377
+501	342183527 18 2825191 2825191 8.4 8.4 1 1 1 1 1
+502	342183545 18 2867175 2867175 8.5 8.5 1 0 0 0 0
+503	342183563 64 2867175 2867175 8.5 8.5 2 87.884554251966 102.59634885749 190.48090310946 18249.705674955
+504	342183627 18 2867175 2867175 8.5 8.5 1 1 1 1 1
+505	342183645 18 2951727 2951727 8.7 8.7 1 0 0 0 0
+506	342183663 64 2951727 2951727 8.7 8.7 2 88.669323643494 105.18628397862 193.85560762211 18926.403292626
+507	342183727 18 2951727 2951727 8.7 8.7 1 1 1 1 1
+508	342183745 18 2951727 2951727 8.7 8.7 1 0 0 0 0
+509	342183763 63 2951727 2951727 8.7 8.7 2 87.928925775643 102.6729859549 190.60191173055 18273.238032954
+510	342183826 18 2951727 2951727 8.7 8.7 1 1 1 1 1
+511	342183844 18 2994511 2994511 8.8 8.8 1 0 0 0 0
+512	342183862 64 2994511 2994511 8.8 8.8 2 87.751312318644 102.36209812959 190.11341044824 18178.291947137
+513	342183926 18 2994511 2994511 8.8 8.8 1 1 1 1 1
+514	342183944 18 2994511 2994511 8.8 8.8 1 0 0 0 0
+515	342183962 64 2994511 2994511 8.8 8.8 2 88.568790466835 103.68391143286 192.25270189969 18594.784134775
+516	342184026 18 2994511 2994511 8.8 8.8 1 1 1 1 1
+517	342184044 17 3514623 3514623 10 10 1 0 0 0 0
+518	342184061 62 3514623 3514623 10 10 2 96.320345127303 144.31304882539 240.63339395269 30103.864946721
+519	342184123 17 3514623 3514623 10 10 1 1 1 1 1
+520	342184140 19 3645519 3645519 10.3 10.3 1 0 0 0 0
+521	342184159 66 3645519 3645519 10.3 10.3 2 88.343663561437 104.23046871235 192.57413227378 18668.593499452
+522	342184225 19 3645519 3645519 10.3 10.3 1 1 1 1 1
+523	342184244 19 4303643 4303643 11.8 11.8 1 0 0 0 0
+524	342184263 66 4303643 4303643 11.8 11.8 2 96.232158955511 142.87256388761 239.10472284313 29673.197929059
+525	342184329 19 4303643 4303643 11.8 11.8 1 1 1 1 1
+526	342184348 19 4524437 4524437 12.3 12.3 1 0 0 0 0
+527	342184367 66 4524437 4524437 12.3 12.3 2 92.256306496064 113.45906834904 205.71537484511 21384.186278928
+528	342184433 19 4524437 4524437 12.3 12.3 1 1 1 1 1
+529	342184452 19 4746465 4746465 12.8 12.8 1 0 0 0 0
+530	342184471 66 4746465 4746465 12.8 12.8 2 94.698983986334 131.50369274992 226.20267673625 26261.118774908
+531	342184537 19 4746465 4746465 12.8 12.8 1 1 1 1 1
+532	342184556 19 5014575 5014575 13.4 13.4 1 0 0 0 0
+533	342184575 66 5014575 5014575 13.4 13.4 2 92.294226354546 113.60723704425 205.9014633988 21424.828527213
+534	342184641 19 5014575 5014575 13.4 13.4 1 1 1 1 1
+535	342184660 19 5688705 5688705 14.9 14.9 1 0 0 0 0
+536	342184679 66 5688705 5688705 14.9 14.9 2 97.033949421255 153.16057022137 250.19451964263 32873.747610823
+537	342184745 19 5688705 5688705 14.9 14.9 1 1 1 1 1
+538	342184764 19 7452005 7452005 18.8 18.8 1 0 0 0 0
+539	342184783 64 7452005 7452005 18.8 18.8 2 96.408762790863 145.811583749 242.22034653986 30555.667498256
+540	342184847 19 7452005 7452005 18.8 18.8 1 1 1 1 1
+541	342184866 20 11317827 11317827 27.3 27.3 1 0 0 0 0
+542	342184886 68 11317827 11317827 27.3 27.3 2 92.037410178185 114.61713287507 206.65454305326 21607.972020809
+543	342184954 20 11317827 11317827 27.3 27.3 1 1 1 1 1
+
