@@ -1,0 +1,3 @@
+package ckx;
+
+@license(LGPL);
